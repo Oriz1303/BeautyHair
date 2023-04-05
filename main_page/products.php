@@ -8,14 +8,13 @@ include "../components/header.php"
 <hr>
 <div class="container">
     <div class="row w-100 mx-5">
-        <div class="col-6  d-flex ">
-            <p class="float-left">COSMETICS</p>
-        </div>
-        <div class="col-6  d-flex justify-content-end">
-            <p class="float-right">Order</p>
+        <div class="col-3">asdsads</div>
+        <div class="col-9  d-flex ">
+            <p class="w-50">COSMETICS</p>
+            <p class="w-50 d-flex justify-content-end">Order</p>
         </div>
     </div>
 </div>
 <?php
 include "../components/footer.php"
-?>
+?> 
