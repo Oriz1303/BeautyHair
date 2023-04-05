@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: .2s linear;
+    position: relative;
+    cursor: default;
+}
+
+body {
+    font-size: 14px;
+}
+
+
+/* ------------------------------------COMMON TAG START-------------------------------------------------- */
+.heading {
+    font-weight: 600;
+    text-align: center;
+    z-index: 999;
+    margin-bottom: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+.home-news-events {
+    margin-bottom: 0px;
+    
+}
+.home-news-events .container {
+    background: #cccccc;
+}
+.home-news-events .row {
+    padding: 14px 10px;
+}
+
+
+
+
+
+/* ------------------------------------COMMON TAG END-------------------------------------------------- */
+
+
+
+/* ------------------------------------HEADER START-------------------------------------------------- */
+
+.search-bar {
+    width: 16vw;
+}
+
+header  {
+    z-index: 989;
+    background-color: white;
+}
+
+header .nav-bar > a {
+    padding: 12px 20px 12px 20px;
+}
+
+header .nav-bar>.after-bar::after {
+    content: "";
+    width: 2px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    display: inline-flex;
+    margin-left: 40px;
+    
+}
+
+/* ------------------------------------HEADER END-------------------------------------------------- */
+
+
+
+/* ------------------------------------CONTENT START-------------------------------------------------- */
+.icons-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #cccccc;
+}
+
+.icons-container > .icons {
+    display: inline-flex;
+    padding: 14px;
+    background-color: white;
+    margin-left: 13px;
+}
+
+.home-bg-cosmetics {
+    background-size: cover;
+}
+
+.home-products .slider-products div > .cosmetics-item {
+    margin:0 20px;
+    padding:4px;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.home-products .slider-products .active-line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: black;
+    transition: all 0.2s ease;
+}
+
+.products-item {
+    display: none;
+    margin-bottom: 4vh;
+}
+
+.products-item.status-on {
+    display: flex;
+    justify-content: center;
+}
+.products-item.status-on > div {
+    gap: 2rem;
+}
+.row-cols-4>* {
+    margin-bottom: 2vh;
+}
+
+
+
+/* ------------------------------------CONTENT END-------------------------------------------------- */
+
+
+
+
+
+
+.fa-chevron-down {
+    font-size: x-small;
+}
+
+
+/* ------------------------------------FOOTER START-------------------------------------------------- */
+
+
+
+.footer-web {
+    background-image: url("../img/bg_footer.png");
+}
+
+footer .brand {
+    font-size: 56px;
+    color:#ffffff;
+}
+
+footer .social-media-brand {
+    font-size: medium;
+    color: white;
+    opacity: 0.6;
+}
+
+/* ------------------------------------FOOTER END-------------------------------------------------- */
