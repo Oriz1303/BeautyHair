@@ -1,5 +1,11 @@
 <?php
-include "../components/header.php";
+
+
+require_once('../database/helper.php');
+require_once('../utils/utility.php');
+include("../components/header.php");
+
+
 ?>
 
 <section>
@@ -29,8 +35,8 @@ include "../components/header.php";
 <section class="home-products">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h1 class="heading">COSMETICS</h1>
+            <div class="col-12 text-center">
+                <strong class="heading ">COSMETICS</strong>
             </div>
         </div>
         <div class="row slider-products">
@@ -47,126 +53,100 @@ include "../components/header.php";
         <div class="products-tab container pt-4">
             <div class="products-item status-on row row-cols-4">
                 <?php
-                $resultCream = mysqli_query($conn, "SELECT * FROM information_products WHERE title= 1");
-                if (mysqli_num_rows($resultCream) > 0) {
-                    while ($rowCream = mysqli_fetch_assoc($resultCream)) {
+                $resultCream = executeResult("SELECT * FROM information_products WHERE title= 1");
+                foreach ($resultCream as $cream) {
                 ?>
-                        <div>
-                            <div class="text-center">
-                                <img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $rowCream['url'] ?>" alt="">
-
-                                <div>
-
-                                </div>
-                                <div class="text-center fs-4">
-                                    <p><?=$rowCream['name']?></p>
-                                    <p class="fs-5 fw-light">$ <?=$rowCream['price']?></p>
-                                </div>
+                    <div>
+                        <div class="text-center">
+                            <a href="./products_detail.php?products=<?=$cream['id']?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $cream['url'] ?>" alt=""></a>
+                            <div class="text-center fs-4">
+                                <i onclick="addToCart(<?= $cream['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
+                                <p><?= $cream['name'] ?></p>
+                                <p class="fs-5 fw-light">$ <?= $cream['price'] ?></p>
                             </div>
                         </div>
-
+                    </div>
                 <?php
-                    }
                 }
                 ?>
             </div>
             <div class="products-item">
                 <?php
-                $resultShampoo = mysqli_query($conn, "SELECT * FROM information_products WHERE title=2");
-                if (mysqli_num_rows($resultShampoo) > 0) {
-                    while ($rowShampoo = mysqli_fetch_assoc($resultShampoo)) {
+                $resultShampoo = executeResult("SELECT * FROM information_products WHERE title=2");
+                foreach ($resultShampoo as $shampoo) {
                 ?>
-                        <div>
-                            <div class="text-center">
-                                <img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $rowShampoo['url'] ?>" alt="">
-
-                                <div>
-
-                                </div>
-                                <div class="text-center fs-4">
-                                    <p><?=$rowShampoo['name']?></p>
-                                    <p class="fs-5 fw-light">$ <?=$rowShampoo['price']?></p>
-                                </div>
+                    <div>
+                        <div class="text-center">
+                            <a href="./products_detail.php?products=<?=$shampoo['id']?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $shampoo['url'] ?>" alt=""></a>
+                            <div class="text-center fs-4">
+                                <i onclick="addToCart(<?= $shampoo['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
+                                <p><?= $shampoo['name'] ?></p>
+                                <p class="fs-5 fw-light">$ <?= $shampoo['price'] ?></p>
                             </div>
                         </div>
+                    </div>
                 <?php
-                    }
                 }
                 ?>
             </div>
             <div class="products-item">
                 <?php
-                $resultMask = mysqli_query($conn, "SELECT * FROM information_products WHERE title=3");
-                if (mysqli_num_rows($resultMask) > 0) {
-                    while ($rowMask = mysqli_fetch_assoc($resultMask)) {
+                $resultMask = executeResult("SELECT * FROM information_products WHERE title=3");
+                foreach ($resultMask as $mask) {
                 ?>
-                        <div>
-                            <div class="text-center">
-                                <img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $rowMask['url'] ?>" alt="">
-
-                                <div>
-
-                                </div>
-                                <div class="text-center fs-4">
-                                    <p><?=$rowMask['name']?></p>
-                                    <p class="fs-5 fw-light">$ <?=$rowMask['price']?></p>
-                                </div>
+                    <div>
+                        <div class="text-center">
+                            <a href="./products_detail.php?products=<?=$mask['id']?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $mask['url'] ?>" alt=""></a>
+                            <div class="text-center fs-4">
+                                <i onclick="addToCart(<?= $mask['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
+                                <p><?= $mask['name'] ?></p>
+                                <p class="fs-5 fw-light">$ <?= $mask['price'] ?></p>
                             </div>
                         </div>
+                    </div>
                 <?php
-                    }
                 }
                 ?>
             </div>
             <div class="products-item">
                 <?php
-                $resultSerum = mysqli_query($conn, "SELECT * FROM information_products WHERE title=4");
-                if (mysqli_num_rows($resultSerum) > 0) {
-                    while ($rowSerum = mysqli_fetch_assoc($resultSerum)) {
+                $resultSerum = executeResult("SELECT * FROM information_products WHERE title=4");
+                foreach ($resultSerum as $serum) {
                 ?>
-                        <div>
-                            <div class="text-center">
-                                <a href=""><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $rowSerum['url'] ?>" alt=""></a>
-
-                                <div>
-
-                                </div>
-                                <div class="text-center fs-4">
-                                    <p><?=$rowSerum['name']?></p>
-                                    <p class="fs-5 fw-light">$ <?=$rowSerum['price']?></p>
-                                </div>
+                    <div>
+                        <div class="text-center">
+                            <a href="./products_detail.php?products=<?=$serum['id']?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $serum['url'] ?>" alt=""></a>
+                            <div class="text-center fs-4">
+                                <i onclick="addToCart(<?= $serum['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
+                                <p><?= $serum['name'] ?></p>
+                                <p class="fs-5 fw-light">$ <?= $serum['price'] ?></p>
                             </div>
                         </div>
+                    </div>
                 <?php
-                    }
                 }
                 ?>
             </div>
             <div class="products-item">
                 <?php
-                $resultOther = mysqli_query($conn, "SELECT * FROM information_products WHERE title=6");
-                if (mysqli_num_rows($resultOther) > 0) {
-                    while ($rowOther = mysqli_fetch_assoc($resultOther)) {
+                $resultOther = executeResult("SELECT * FROM information_products WHERE title=6");
+                foreach ($resultOther as $other) {
                 ?>
-                        <div>
-                            <div class="text-center">
-                                <img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $rowOther['url'] ?>" alt="">
-
-                                <div>
-
-                                </div>
-                                <div class="text-center fs-4">
-                                    <p><?=$rowOther['name']?></p>
-                                    <p class="fs-5 fw-light">$ <?=$rowOther['price']?></p>
-                                </div>
+                    <div>
+                        <div class="text-center">
+                            <a href="./products_detail.php?products=<?=$other['id']?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $other['url'] ?>" alt=""></a>
+                            <div class="text-center fs-4">
+                                <i onclick="addToCart(<?= $other['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
+                                <p><?= $other['name'] ?></p>
+                                <p class="fs-5 fw-light">$ <?= $other['price'] ?></p>
                             </div>
                         </div>
+                    </div>
                 <?php
-                    }
                 }
                 ?>
             </div>
-            
+
 
         </div>
     </div>
@@ -256,7 +236,21 @@ include "../components/header.php";
     </div>
 </section>
 
+<script type="text/javascript">
+    console.log($('.home-news-events'));
 
+    function addToCart(id) {
+        $.post('../api/cookie.php', {
+            'action': 'add',
+            'id': id,
+            'num': 1
+        }, function(data) {
+            $("#totalCart").load("index.php #totalCart")
+        })
+    }
+
+    
+</script>
 
 <?php
 include '../components/footer.php';

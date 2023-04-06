@@ -13,6 +13,10 @@
     cursor: default;
 }
 
+a {
+    cursor: pointer;
+}
+
 body {
     font-size: 14px;
 }
@@ -22,7 +26,6 @@ body {
 .heading {
     font-weight: 600;
     text-align: center;
-    z-index: 999;
     margin-bottom: 20px;
 }
 
@@ -32,11 +35,13 @@ section {
 
 .home-news-events {
     margin-bottom: 0px;
-    
+
 }
+
 .home-news-events .container {
     background: #cccccc;
 }
+
 .home-news-events .row {
     padding: 14px 10px;
 }
@@ -55,12 +60,12 @@ section {
     width: 16vw;
 }
 
-header  {
+header {
     z-index: 989;
     background-color: white;
 }
 
-header .nav-bar > a {
+header .nav-bar>a {
     padding: 12px 20px 12px 20px;
 }
 
@@ -71,7 +76,7 @@ header .nav-bar>.after-bar::after {
     background: rgba(255, 255, 255, 0.5);
     display: inline-flex;
     margin-left: 40px;
-    
+
 }
 
 /* ------------------------------------HEADER END-------------------------------------------------- */
@@ -80,13 +85,13 @@ header .nav-bar>.after-bar::after {
 
 /* ------------------------------------CONTENT START-------------------------------------------------- */
 .icons-container {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     background-color: #cccccc;
 }
 
-.icons-container > .icons {
+.icons-container>.icons {
     display: inline-flex;
     padding: 14px;
     background-color: white;
@@ -97,9 +102,9 @@ header .nav-bar>.after-bar::after {
     background-size: cover;
 }
 
-.home-products .slider-products div > .cosmetics-item {
-    margin:0 20px;
-    padding:4px;
+.home-products .slider-products div>.cosmetics-item {
+    margin: 0 20px;
+    padding: 4px;
     font-size: 21px;
     cursor: pointer;
 }
@@ -123,14 +128,30 @@ header .nav-bar>.after-bar::after {
     display: flex;
     justify-content: center;
 }
-.products-item.status-on > div {
+
+.products-item.status-on>div {
     gap: 2rem;
 }
+
 .row-cols-4>* {
     margin-bottom: 2vh;
 }
 
 
+.grid-containers {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+}
+
+.grid-containers > * {
+    text-align: center;
+}
+
+.grid-containers > .grid-item a img{
+    cursor:pointer;
+}
 
 /* ------------------------------------CONTENT END-------------------------------------------------- */
 
@@ -154,7 +175,7 @@ header .nav-bar>.after-bar::after {
 
 footer .brand {
     font-size: 56px;
-    color:#ffffff;
+    color: #ffffff;
 }
 
 footer .social-media-brand {

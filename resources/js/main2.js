@@ -1,9 +1,8 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
 
-const formSignup = $$('.form-signin');
 
-const header = $('header');
+const formSignup = document.querySelectorAll('.form-signin');
+
+const header = document.querySelector('header');
 console.log(header)
 let lastScrollTop = 0;
 window.onscroll = () => {
@@ -25,18 +24,18 @@ window.onscroll = () => {
     lastScrollTop = currentScroll
 }
 
-const homeCosmeticsItem = $$('.cosmetics-item');
-const activeLine = $('.active-line');
-const locationLine = $('.cosmetics-item.status-on');
-const productsItem = $$('.products-item')
+const homeCosmeticsItem = document.querySelectorAll('.cosmetics-item');
+const activeLine = document.querySelector('.active-line');
+const locationLine = document.querySelector('.cosmetics-item.status-on');
+const productsItem = document.querySelectorAll('.products-item')
 activeLine.style.left = locationLine.offsetLeft + 'px';
 activeLine.style.width = locationLine.offsetWidth + 'px';
 console.log(homeCosmeticsItem)
 homeCosmeticsItem.forEach((item, index )=> {
     item.onclick = () => {
-        $('.cosmetics-item.status-on').classList.remove('status-on')
-        $('.products-item.status-on').classList.remove('status-on')
-        $('.products-item.row.row-cols-4').classList.remove('row', 'row-cols-4')
+        document.querySelector('.cosmetics-item.status-on').classList.remove('status-on')
+        document.querySelector('.products-item.status-on').classList.remove('status-on')
+        document.querySelector('.products-item.row.row-cols-4').classList.remove('row', 'row-cols-4')
         activeLine.style.left = item.offsetLeft + 'px'
         activeLine.style.width = item.offsetWidth + 'px'
         

@@ -123,7 +123,6 @@ const Validator = (formSelector) => {
 
     // submit form
     formElement.onsubmit = (e) => {
-        e.preventDefault();
         let inputs = formElement.querySelectorAll('[name][rules]');
         let isValid = true;
         for (let input of inputs) {
@@ -131,10 +130,11 @@ const Validator = (formSelector) => {
                 isValid = false;
             }
         }
-
         // no message error
         if (isValid) {
             formElement.submit();
+        } else {
+            e.preventDefault();
         }
     }
     // console.log(formRules)
