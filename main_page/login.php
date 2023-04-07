@@ -21,7 +21,7 @@ if (isset($_POST['signinUsername']) && isset($_POST['signinPassword'])) {
     HOME > LOGIN ACCOUNT</div>
 <hr>
 <section class="form-login">
-    <div class="container ">
+    <div class="signin container ">
         <h1 class="text-center">LOGIN</h1><br>
         <div class="d-flex justify-content-center w-100">
             <form id="sign-in" class="w-25 " action="#" method="POST">
@@ -34,11 +34,11 @@ if (isset($_POST['signinUsername']) && isset($_POST['signinPassword'])) {
                     <span class="form-message text-danger"></span>
                 </div>
                 <button name="submitSignin" class="w-100 rounded-pill p-2 bg-dark text-white" type="submit">Login</button>
-                <p>Do not have an account? <span class="form-signin text-danger">Register</span></p>
+                <p>Do not have an account? <span class="form-transfer-signup text-danger">Register</span></p>
             </form>
         </div>
     </div>
-    <div class="container d-none">
+    <div class="signup container d-none">
         <h1 class="text-center">Register</h1><br>
         <div class="d-flex justify-content-center w-100">
             <form id="sign-up" class="w-50" action="#" method="POST">
@@ -59,7 +59,7 @@ if (isset($_POST['signinUsername']) && isset($_POST['signinPassword'])) {
                     <span class="form-message text-danger"></span>
                 </div>
                 <button class="w-100 rounded-pill p-2 bg-dark text-white" type="submit">Sign up</button>
-                <p>Do you already have an account? <span class="form-signin text-danger">Login</span></p>
+                <p>Do you already have an account? <span class="form-transfer-signin text-danger">Login</span></p>
             </form>
         </div>
     </div>
