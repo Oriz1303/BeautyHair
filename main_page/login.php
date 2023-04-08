@@ -1,5 +1,6 @@
 <?php
 ob_start();
+session_start();
 // require_once('../database/helper.php');
 require_once "../database/db.php";
 include "../components/header.php";

@@ -1,4 +1,5 @@
 <?php
+ob_start();
 if(!empty($_POST)) {
 	$cart = [];
 	if(isset($_COOKIE['cart'])) {
@@ -7,6 +8,7 @@ if(!empty($_POST)) {
 	}
 	if($cart ==null || count($cart) == 0) {
 		header('Location: ../components/header.php');
+		ob_end_flush();
 		die();
 	}
 
@@ -53,5 +55,7 @@ if(!empty($_POST)) {
 	}
 
 	header('Location: complete.php');
+	ob_end_flush();
 	setcookie('cart', '[]', time()-1000, '/');
+	ob_end_flush();
 }

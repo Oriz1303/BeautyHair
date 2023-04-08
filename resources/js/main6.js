@@ -36,8 +36,9 @@ const header = document.querySelector('header');
 let lastScrollTop = 0;
 window.onscroll = () => {
     let currentScroll = window.pageYOffset.toFixed(0);
-    if (lastScrollTop < 4) {
+    if (lastScrollTop < 50) {
         if (header.classList.contains('position-fixed')) {
+            header.style.transition = "opacity 0.5s ease-in-out"
             header.classList.remove('position-fixed')
         }
     } else {
@@ -45,10 +46,10 @@ window.onscroll = () => {
     }
 
     if (currentScroll > lastScrollTop) {
-        header.style.opacity = 0
+        // header.style.opacity = 0 
         // header.style.transition = 'opacity 0.5s ease-in-out'
     } else if (currentScroll < lastScrollTop) {
-        header.style.opacity = 1
+        // header.style.opacity = 1
     }
     lastScrollTop = currentScroll
 }

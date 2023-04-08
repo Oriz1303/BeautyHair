@@ -64,6 +64,10 @@ header {
     z-index: 989;
     background-color: white;
 }
+header .nav-bar{
+   
+    background-color: #000;
+}
 
 header .nav-bar>a {
     padding: 12px 20px 12px 20px;
@@ -151,6 +155,31 @@ header .nav-bar>.after-bar::after {
 
 .grid-containers > .grid-item a img{
     cursor:pointer;
+}
+
+.title-cart {
+    display: block;
+    text-align: center;
+}
+.title-cart p {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 0 10px;
+    background: white;
+    
+}
+
+.title-cart::after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #ebebeb;
+    position: absolute;
+    top: 49%;
+    margin-top: -2px;
+    left: 0;
+    z-index: -1;
+    text-align: center;
 }
 
 /* ------------------------------------CONTENT END-------------------------------------------------- */

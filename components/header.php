@@ -17,7 +17,7 @@ foreach ($cart as $item) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/style3.css">
+    <link rel="stylesheet" href="../resources/css/style4.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="../resources/css/bootstrap.min.css"> -->
     <!-- lam cai gi ay nhi loi gi -->
@@ -62,14 +62,14 @@ foreach ($cart as $item) {
                         <div class="pe-2"><a href="../main_page/cart.php"><i class="fa-solid fa-cart-shopping"></i></a></div>
                         <div>
                             <strong> Cart</strong>
-                            <p><span><?= $count ?></span> product</p>
+                            <p><span><?=$count?></span> product</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="nav-bar bg-dark d-flex justify-content-center align-items-center py-1">
+        <div class="nav-bar  d-flex justify-content-center align-items-center py-1">
             <a class="nav-link text-white after-bar" href="../main_page/index.php">HOME</a>
             <a class="nav-link text-white after-bar" href="../main_page/products.php">PRODUCTS <i class="fa-solid fa-chevron-down"></i></a>
             <a class="nav-link text-white after-bar" href="">PROBLEM <i class="fa-solid fa-chevron-down"></i></a>
