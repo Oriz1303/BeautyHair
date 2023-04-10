@@ -1,20 +1,8 @@
 <?php
-ob_start();
-session_start();
 // require_once('../database/helper.php');
 require_once "../database/db.php";
 include "../components/header.php";
-if (isset($_POST['signinUsername']) && isset($_POST['signinPassword'])) {
-    $username = $_POST['signinUsername'];
-    $password = $_POST['signinPassword'];
-    $sql = mysqli_query($connect, "SELECT * FROM account WHERE (username = '$username' OR email = '$username') AND password = '$password'");
-
-    if (mysqli_num_rows($sql) > 0) {
-        header("location: index.php");
-        ob_end_flush();
-    }
-}
-
+include './loginForm.php';
 ?>
 
 
@@ -69,8 +57,6 @@ if (isset($_POST['signinUsername']) && isset($_POST['signinPassword'])) {
 <script>
     Validator('#sign-in');
     Validator('#sign-up');
-
-    
 </script>
 <?php
 include '../components/footer.php';

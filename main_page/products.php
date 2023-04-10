@@ -2,9 +2,27 @@
 require_once('../database/helper.php');
 require_once('../utils/utility.php');
 include "../components/header.php";
+// $result = executeResult("SELECT * FROM information_products");
+if (isset($_GET['page_no']) && $_GET['page_no'] !== '') {
+    $pageNo = $_GET['page_no'];
+} else {
+    $pageNo = 1;
+}
 
+$productsPerPage = 8;
+$offset = ($pageNo - 1) * $productsPerPage;
+$previousPage = $pageNo - 1;
+$nextPage = $pageNo + 1;
 
-$result = executeResult("SELECT * FROM information_products");
+$resultCount = executeResult("SELECT COUNT(*) as total_records FROM information_products");
+foreach ($resultCount as $records) {
+    $records =  $records['total_records'];
+}
+
+$totalNoOfPages = ceil($records / $productsPerPage);
+echo $totalNoOfPages;
+
+$sqlProducts = executeResult("SELECT * FROM information_products LIMIT $offset, $productsPerPage");
 ?>
 
 <div class="container pt-3 fw-light fs-5">
@@ -22,7 +40,7 @@ $result = executeResult("SELECT * FROM information_products");
                 </div>
                 <div class="grid-containers">
                     <?php
-                    foreach ($result as $row) {
+                    foreach ($sqlProducts as $row) {
                     ?>
                         <div class="grid-item">
                             <a href="products_detail.php?products=<?= $row['id'] ?>"><img class="w-75" src="../resources/img/img_cosmetics/<?= $row['url'] ?>" alt=""></a>
@@ -32,10 +50,22 @@ $result = executeResult("SELECT * FROM information_products");
                                 <p class="fs-6 fw-light">$ <?= $row['price'] ?></p>
                             </div>
                         </div>
-
-                    <?php }
-                    ?>
+                    <?php } ?>
+                    
+                    <!-- <div>
+                        <strong>Page <?= $pageNo; ?> of <?= $totalNoOfPages ?> </strong>
+                    </div> -->
                 </div>
+                <nav class="text-center" aria-label="">
+                        <ul class="pagination ">
+                            <li class="page-item"><a class="page-link text-decoration-none text-center <?= ($pageNo <= 1) ? 'disabled' : ''; ?>" href="<?= ($pageNo > 1) ? 'products.php?page_no=' . $previousPage : ''; ?>"><</a></li>
+                            <?php
+                            for ($counter = 1; $counter <= $totalNoOfPages; $counter++) { ?>
+                                <li class="page-item"><a class="px-2 text-decoration-none text-center" href="products.php?page_no=<?=$counter?>"><?=$counter?></a></li>
+                            <?php } ?>
+                            <li class="page-item"><a class="page-link text-decoration-none text-center <?= ($pageNo >= $totalNoOfPages) ? 'disabled' : ''; ?>" href="<?= ($pageNo < $totalNoOfPages) ? 'products.php?page_no=' . $nextPage : ''; ?>">></a></li>
+                        </ul>
+                    </nav>
             </div>
         </div>
     </div>

@@ -78,8 +78,8 @@ $id = getGet('id');
                 <div class="fs-3" id="totalOrder">
                     Total : <span class="text-danger">$ <?= number_format($total, 2, '.', ',') ?></span>
                 </div>
-                <div class="" >
-                    <a  href="checkout.php"><button class='fs-5 px-5 rounded-pill btn btn-dark'>Checkout</button></a>
+                <div class="">
+                    <a href="checkout.php"><button class='fs-5 px-5 rounded-pill btn btn-dark'>Checkout</button></a>
                     <a href="../main_page/products.php" class="ps-2" ><button style="background: #f1f1f1;" class='fs-5 btn px-5 rounded-pill'>Continue shopping</button></a>
                 </div>
             </div>

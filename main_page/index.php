@@ -1,13 +1,14 @@
 <?php
-
-
+ob_start();
 require_once('../database/helper.php');
 require_once('../utils/utility.php');
 include("../components/header.php");
 
 
 ?>
+<?php 
 
+?>
 <section>
     <div class="swiper home-slider-news">
         <div class="swiper-wrapper">
@@ -36,7 +37,7 @@ include("../components/header.php");
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <strong class="heading ">COSMETICS</strong>
+                <h1 class="heading ">COSMETICS</strong>
             </div>
         </div>
         <div class="row slider-products">
@@ -237,7 +238,6 @@ include("../components/header.php");
 </section>
 
 <script type="text/javascript">
-    console.log($('.home-news-events'));
 
     function addToCart(id) {
         $.post('../api/cookie.php', {

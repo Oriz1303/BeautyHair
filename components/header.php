@@ -1,4 +1,6 @@
 <?php
+session_start();
+ob_start();
 $cart = [];
 if (isset($_COOKIE['cart'])) {
     $json = $_COOKIE['cart'];
@@ -17,7 +19,7 @@ foreach ($cart as $item) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/style4.css">
+    <link rel="stylesheet" href="../resources/css/style7.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="../resources/css/bootstrap.min.css"> -->
     <!-- lam cai gi ay nhi loi gi -->
@@ -48,32 +50,75 @@ foreach ($cart as $item) {
                         <div class="pe-2"><i class="fs-5 fa-solid fa-location-dot"></i></div>
                         <div>
                             <strong> Address</strong>
-                            <p><a href="#">View the map</a></p>
+                            <p><a href="../main_page/map.php">View the map</a></p>
                         </div>
                     </div>
                     <div class="d-inline-flex justify-content-center align-items-center">
                         <div class="pe-2"><i class="fs-5 fa-solid fa-user"></i></div>
                         <div>
-                            <strong> Account</strong>
-                            <p><a href="../main_page/login.php">Login</a></p>
+                            <?php
+                            if (isset($_SESSION['account_id'])) {
+                                require_once '../database/db.php';
+                                $current_account = $_SESSION['account_id'];
+                                $thisAccout = mysqli_query($connect, "SELECT * FROM account WHERE id = $current_account");
+                                $accout_current_name = mysqli_fetch_assoc($thisAccout);
+                                echo '<strong>Hello, ' . $accout_current_name['username'] . '</strong>';
+                                echo '<p><a href="../handle/logout.php">Logout</a></p>';
+                            } else {
+                                echo '<strong> Account</strong>';
+                                echo '<p><a href="../main_page/login.php">Login</a></p>';
+                            }
+                            ?>
+
+
                         </div>
                     </div>
                     <div id="totalCart" class="d-inline-flex justify-content-center align-items-center">
                         <div class="pe-2"><a href="../main_page/cart.php"><i class="fa-solid fa-cart-shopping"></i></a></div>
                         <div>
                             <strong> Cart</strong>
-                            <p><span><?=$count?></span> product</p>
+                            <p><span><?= $count ?></span> product</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="nav-bar  d-flex justify-content-center align-items-center py-1">
-            <a class="nav-link text-white after-bar" href="../main_page/index.php">HOME</a>
-            <a class="nav-link text-white after-bar" href="../main_page/products.php">PRODUCTS <i class="fa-solid fa-chevron-down"></i></a>
-            <a class="nav-link text-white after-bar" href="">PROBLEM <i class="fa-solid fa-chevron-down"></i></a>
-            <a class="nav-link text-white after-bar" href="">NEWS</a>
-            <a class="nav-link text-white " href="">ABOUT</a>
+        <div class="nav-bar  d-flex justify-content-center align-items-center py-1 position-relative">
+            <div><a class="nav-link  after-bar" href="../main_page/index.php">HOME</a></div>
+            <div class="sub-nav-bar">
+                <a class="nav-link  after-bar" href="../main_page/products.php">PRODUCTS <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="subnav d-none justify-content-around shadow">
+                    <div>
+                        <strong>Daily hair care</strong>
+                        <div><a href="">Brushing Hair, Easy But Not Easy</a></div>
+                        <div><a href="">5 Secrets of Perfect Hair Care</a></div>
+                        <div><a href="">Hair Care, Nurturing and Gentle</a></div>
+                    </div>
+                    <div>
+                        <strong>Hair problems</strong>
+                        <div><a href="">Common diseases & <br>remedies</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-nav-bar">
+                <a class="nav-link  after-bar" href="">CARE <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="subnav d-none justify-content-around shadow">
+                    <div>
+                        <strong>Daily hair care</strong>
+                        <div><a href="">Brushing Hair, Easy But Not Easy</a></div>
+                        <div><a href="">5 Secrets of Perfect Hair Care</a></div>
+                        <div><a href="">Hair Care, Nurturing and Gentle</a></div>
+                    </div>
+                    <div>
+                        <strong>Hair problems</strong>
+                        <div><a href="">Common diseases & <br>remedies</a></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a class="nav-link  after-bar" href="">NEWS</a>
+            </div>
+            <div><a class="nav-link  " href="">EQUIPMENT</a></div>
         </div>
     </header>

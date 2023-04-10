@@ -25,24 +25,49 @@
 
 //   }
 // }
+let parent = document.querySelectorAll('.sub-nav-bar');
+console.log(parent)
+let children = document.querySelectorAll('.subnav');
+console.log($('.sub-nav-bar').children(''));
 
+function hoverParent(parents, children) {
+    parents.forEach((parent, index) => {
+        parent.addEventListener('mouseover', () => {
+            if (children[index].classList.contains('d-none')) {
+                children[index].classList.remove('d-none')
+                children[index].classList.add('d-flex')
+            }
+        })
+        parent.addEventListener('mouseout', () => {
+            if (!children[index].classList.contains('d-none')) {
+                children[index].classList.add('d-none')
+                children[index].classList.remove('d-flex')
+            }
+        })
+    })
+}
 
+hoverParent(parent, children);
 
 
 const formSignup = document.querySelectorAll('.form-signin');
 
-const header = document.querySelector('header');
+const header = document.querySelector('.nav-bar');
 // console.log(header)
 let lastScrollTop = 0;
 window.onscroll = () => {
     let currentScroll = window.pageYOffset.toFixed(0);
-    if (lastScrollTop < 50) {
+    // console.log(currentScroll)
+    if (lastScrollTop < 90) {
         if (header.classList.contains('position-fixed')) {
-            header.style.transition = "opacity 0.5s ease-in-out"
             header.classList.remove('position-fixed')
         }
     } else {
         header.classList.add('position-fixed')
+        header.style.transition = "0.5s linear"
+        header.style.top = "0"
+        header.style.left = "0"
+        header.style.width = "100vw"
     }
 
     if (currentScroll > lastScrollTop) {
@@ -62,7 +87,7 @@ const locationLine = document.querySelector('.cosmetics-item.status-on');
 const productsItem = document.querySelectorAll('.products-item')
 activeLine.style.left = locationLine.offsetLeft + 'px';
 activeLine.style.width = locationLine.offsetWidth + 'px';
-console.log(homeCosmeticsItem)
+// console.log(homeCosmeticsItem)
 homeCosmeticsItem.forEach((item, index) => {
     item.onclick = () => {
         document.querySelector('.cosmetics-item.status-on').classList.remove('status-on')

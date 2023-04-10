@@ -15,8 +15,9 @@ if(!empty($_POST)) {
 	$fullname = getPost('fullname');
 	$email = getPost('email');
 	$phone_number = getPost('phone_number');
-	$address = getPost('address');
+	$address = getPost('address').', '.getPost('province').', '.getPost('district').'.';
 	$orderDate = date('Y-m-d H:i:s');
+	echo $address;
 
 	//add order
 	$sql = "insert into orders(fullname, email, phone_number, address, order_date) values ('$fullname', '$email', '$phone_number', '$address', '$orderDate')";
