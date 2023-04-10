@@ -19,6 +19,14 @@ if (count($idList) > 0) {
     $cartList = [];
 }
 $id = getGet('id');
+$btnCheckout = '';
+if (count($cart) == 0) {
+    $nothingCart = "Nothing in Cart";
+    $_SESSION['nothingCart'] = $nothingCart;
+    $btnCheckout = "<button class='fs-5 px-5 rounded-pill btn btn-dark'>Checkout</button>";
+} else {
+    $btnCheckout = '<a href="checkout.php"><button class="fs-5 px-5 rounded-pill btn btn-dark">Checkout</button></a>';
+}
 ?>
 <!-- body -->
 <div class="container pt-3 fw-light fs-5">
@@ -41,7 +49,6 @@ $id = getGet('id');
                         <th>Total</th>
                         <th></th>
                     </tr>
-
                 </thead>
                 <tbody>
                     <!-- Lấy dữ liệu rồi đổ ra bảng cart -->
@@ -61,26 +68,31 @@ $id = getGet('id');
                         '<tr class="">
                             <td class="text-center"><img src="../resources/img/img_cosmetics/' . $item['url'] . '"style="height:100px"/></td>
                             <td class="fs-5 fw-light">' . $item['name'] . ' <br>
-                            <i style="font-size:10px" onclick="deleteCart(' . $item['id'] . ')" class="fa-solid fa-x"></i> <span class="fs-6">Delete</span></td>
+                            <i style="font-size:10px" onclick="deleteCart(' . $item['id'] . ')" class="fa-solid fa-x pe-auto"></i> <span class="fs-6">Delete</span></td>
                             <td>' . $num . '</td>
                             <td>' . number_format($item['price'], 2, '.', ',') . '</td>
                             <td>' . number_format($num * $item['price'], 2, '.', ',') . '</td>
                             <td><button class="btn btn-warning" onclick="addToCart(' . $item['id'] . ')">Add</button></td>
                             </tr>';
                     }
-                    // <td><button class="btn btn-warning" >Delete</button></td>
-                    // <td>' . $num . '</td>
-                    // <td>' . () . '</td>
                     ?>
                 </tbody>
             </table>
+            <?php
+            if (isset($_SESSION['nothingCart'])) {
+                echo '<div class="text-center fs-2">' . $_SESSION['nothingCart'] . '</div>';
+                unset($_SESSION['nothingCart']);
+            } else {
+                echo '';
+            }
+            ?>
             <div class="float-right">
                 <div class="fs-3" id="totalOrder">
                     Total : <span class="text-danger">$ <?= number_format($total, 2, '.', ',') ?></span>
                 </div>
                 <div class="">
-                    <a href="checkout.php"><button class='fs-5 px-5 rounded-pill btn btn-dark'>Checkout</button></a>
-                    <a href="../main_page/products.php" class="ps-2" ><button style="background: #f1f1f1;" class='fs-5 btn px-5 rounded-pill'>Continue shopping</button></a>
+                    <?= $btnCheckout ?>
+                    <a href="../main_page/products.php" class="ps-2"><button style="background: #f1f1f1;" class='fs-5 btn px-5 rounded-pill'>Continue shopping</button></a>
                 </div>
             </div>
         </div>
@@ -97,6 +109,7 @@ $id = getGet('id');
             location.reload()
         })
     }
+
     function addToCart(id) {
         $.post('../api/cookie.php', {
             'action': 'add',

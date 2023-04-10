@@ -16,7 +16,7 @@ const Validator = (formSelector) => {
             return regex.test(value) ? undefined : 'Enter the correct phone number format'
         },
         strongPassword: (value) => {
-            let regex = /^.*(?=.*[a-z])(?=.*\d)(?=.*[A-Z])(?=.*[!@#$]).*$/;
+            let regex = /^(?=(?:.*[a-z]){2})(?=(?:.*[A-Z]){2})(?=(?:.*\d){2})(?=(?:.*[!@#$%^&*-]){2}).{6,18}$/;
             return regex.test(value) ? undefined : 'Your password is weak'
         },
         min: (min) => {

@@ -2,6 +2,7 @@
 require_once('../database/helper.php');
 require_once('../utils/utility.php');
 include "../components/header.php";
+require '../api/handle_compare.php';
 // $result = executeResult("SELECT * FROM information_products");
 if (isset($_GET['page_no']) && $_GET['page_no'] !== '') {
     $pageNo = $_GET['page_no'];
@@ -20,9 +21,9 @@ foreach ($resultCount as $records) {
 }
 
 $totalNoOfPages = ceil($records / $productsPerPage);
-echo $totalNoOfPages;
 
 $sqlProducts = executeResult("SELECT * FROM information_products LIMIT $offset, $productsPerPage");
+$sqlCount = executeResult("SELECT count(*) as count FROM information_products");
 ?>
 
 <div class="container pt-3 fw-light fs-5">
@@ -35,8 +36,9 @@ $sqlProducts = executeResult("SELECT * FROM information_products LIMIT $offset, 
         <div class="col-10">
             <div class="container w-100">
                 <div class="row">
-                    <p class="w-50">COSMETICS</p>
+                    <p class="w-50 fw-bold fs-4">COSMETICS <span class="fw-light fs-5">(<?php foreach($sqlCount as $count) {echo $count['count'];}?> products)</span></p>
                     <p class="w-50 d-flex justify-content-end">Order</p>
+                    <hr>
                 </div>
                 <div class="grid-containers">
                     <?php
@@ -47,6 +49,7 @@ $sqlProducts = executeResult("SELECT * FROM information_products LIMIT $offset, 
                             <div class="text-center fs-5">
                                 <i onclick="addToCart(<?= $row['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
                                 <p><?= $row['name'] ?></p>
+                                <button type="submit" class="compare-product fs-6 fw-light " onclick="addProductCompare(<?=$row['id']?>)">+ compare</button>
                                 <p class="fs-6 fw-light">$ <?= $row['price'] ?></p>
                             </div>
                         </div>
@@ -69,70 +72,59 @@ $sqlProducts = executeResult("SELECT * FROM information_products LIMIT $offset, 
             </div>
         </div>
     </div>
-
+    <h1><?=$id_compare?></h1>
 </div>
 
-<script type="text/javascript">
-    function addToCart(id) {
-        $.post('../api/cookie.php', {
-            'action': 'add',
-            'id': id,
-            'num': 1
-        }, function(data) {
-            $("#totalCart").load("../components/header.php #totalCart")
+<style>
+    #compare-product {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: #ebebeb;
+        width: 100%;
+        height: 24vh;
+        z-index: 999;
+        margin: 0;
+    }
+
+    .close-compare-block {
+        float: right;
+    }
+</style>
+
+<section id="compare-product" class="d-none shadow">
+    <div class="container">
+        <div class="close-compare-block">
+            <button class="" ><i class="fa-solid fa-xmark"></i></button>
+            
+        </div>
+    </div>
+</section>
+
+<?php
+include "../components/footer.php"
+
+?>
+<script>
+    let blockCompare = document.getElementById('compare-product');
+    console.log(blockCompare)
+    let compare = document.querySelectorAll('.compare-product');
+    compare.forEach(product => {
+        product.addEventListener('click', () => {
+            blockCompare.classList.remove('d-none')
+        })
+    });
+
+    const closeBlockCompare = document.querySelector('.close-compare-block');
+    closeBlockCompare.onclick = () => {
+        blockCompare.classList.add('d-none');
+    }
+
+    function addProductCompare(id) {
+        $.post('../api/handle_compare.php', {
+            'id_compare': id
+        }, (data) => {
+            $(blockCompare).load("footer.php #compare-product")
         })
     }
 </script>
-<?php
-include "../components/footer.php"
-?>
-
-<!-- <?php
-        // $i = 0;
-        // if (mysqli_num_rows($result) > 0) {
-        //     while ($row = mysqli_fetch_assoc($result)) {
-        //         // kiểm tra nếu $i chia hết cho 4 thì in ra thẻ cha <div>
-        //         if ($i % 4 == 0) {
-        //             echo "<div>";
-        //         }
-
-        //         // in ra thẻ con <span>
-        //         echo "<span>" . $row['ten_san_pham'] . "</span>";
-
-        //         // nếu $i + 1 chia hết cho 4 thì đóng thẻ cha </div>
-        //         if (($i + 1) % 4 == 0) {
-        //             echo "</div>";
-        //         }
-
-        //         $i++;
-        //     }
-
-        //     // kiểm tra nếu $i không chia hết cho 4 thì cần đóng thẻ cha </div> bên ngoài vòng lặp
-        //     if ($i % 4 != 0) {
-        //         echo "</div>";
-        //     }
-        // }
-        ?> -->
-
-
-<!-- <?php
-        // $i = 0;
-        // if (mysqli_num_rows($result) > 0) {
-        //     while ($row = mysqli_fetch_assoc($result)) {
-        //         if ($i == 0 || $i % 4 == 0) {
-        //             echo '<div class="row d-flex w-100">';
-        //         }
-        // 
-        ?>
-        //                 <div class="w-25"><?= $row['price'] ?></div>
-        //         <?php
-                    //         $i++;
-                    //         if (($i + 1) % 4 == 0 || $i == 0) {
-                    //             echo "</div>";
-                    //         }
-                    //     }
-                    //     if ($i % 4 != 0) {
-                    //         echo "</div>";
-                    //     }
-                    // } 
-                    ?> -->

@@ -103,5 +103,9 @@ homeCosmeticsItem.forEach((item, index) => {
 
 // form login
 
+//COMPARE
+
+
+
 
 

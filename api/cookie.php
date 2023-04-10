@@ -11,7 +11,7 @@ if(!empty($_POST)) {
 		$json = $_COOKIE['cart'];
 		$cart = json_decode($json, true);
 	}
-
+	
 	switch ($action) {
 		case 'add':
 			$isFind = false;

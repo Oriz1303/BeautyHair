@@ -51,9 +51,8 @@ if (count($idList) > 0) {
 				</div>
 				<div class="form-group">
 					<label for="address">Address:</label>
-
 					<div class="d-flex">
-						<select id="province" class="w-50" rules="required" name="province">
+						<select id="province" class="w-50 border" rules="required" name="province">
 							<option selected disabled value="">City/Province</option>
 							<?php
 							$resultCity = executeResult("SELECT * FROM province");
@@ -62,7 +61,7 @@ if (count($idList) > 0) {
 								<option value="<?= $city['id'] ?>"><?= $city['_name'] ?></option>
 							<?php } ?>
 						</select>
-						<select class="w-50 " name="district" rules="required" id="district">
+						<select class="w-50 border" name="district" rules="required" id="district">
 							<option selected disabled value="">District</option>
 							<?php
 							$resultDistrict = executeResult("SELECT * FROM district");
@@ -88,11 +87,11 @@ if (count($idList) > 0) {
 			</div>
 			<div class="col-md-7">
 				<h3>Cart</h3>
-				<table class="table table-bordered table-responsive">
+				<table class="table  table-responsive">
 					<thead>
 						<tr>
-							<th>No</th>
-							<th>Num</th>
+							<th>Name</th>
+							<th>Quantity</th>
 							<th>Price</th>
 							<th>Total</th>
 						</tr>
@@ -110,23 +109,25 @@ if (count($idList) > 0) {
 								}
 							}
 							$total += $num * $item['price'];
-							echo '
-			<tr>
-				<td>' . (++$count) . '</td>
-				<td>' . $item['title'] . '</td>
-				<td>' . $num . '</td>
-				<td>' . number_format($item['price'], 0, ',', '.') . '</td>
-				<td>' . number_format($num * $item['price'], 0, ',', '.') . '</td>
-			</tr>';
+						?>
+							<tr>
+								<td><img style="width:2vw" class="" src="../resources/img/img_cosmetics/<?=$item['url']?>" alt=""> <?=$item['name']?></td>
+								<td><?=$num?></td>
+								<td><?=number_format($item['price'], 2, ',', '.')?></td>
+								<td><?=number_format($num * $item['price'], 2, ',', '.')?></td>
+							</tr>
+						<?php
 						}
 						?>
 					</tbody>
 				</table>
-				<p style="font-size: 30px; color: red">
-					Total: <?= number_format($total, 0, ',', '.') ?>
+				<p style="font-size: 30px; ">
+					Total: <span class="text-danger">$ <?= number_format($total, 2, ',', '.') ?></span>
 				</p>
 
-				<button class="btn btn-success" style="width: 100%; font-size: 32px;">Complete</button>
+				<div class="w-100 text-center ">
+					<button class="btn btn-success rounded-pill  w-50" style="font-size: 32px;">Complete</button>
+				</div>
 			</div>
 		</div>
 	</div>

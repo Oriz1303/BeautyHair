@@ -1,4 +1,5 @@
 <?php 
+$errorMessage ='';
 if (isset($_POST['signinUsername']) && isset($_POST['signinPassword'])) {
     $username = $_POST['signinUsername'];
     $password = $_POST['signinPassword'];
@@ -10,6 +11,8 @@ if (isset($_POST['signinUsername']) && isset($_POST['signinPassword'])) {
         header("location: index.php");
         ob_end_flush();
     } else {
+        $errorMessage = "Wrong password or user name";
+        $_SESSION['errorMessage'] = $errorMessage;
     }
     
 }

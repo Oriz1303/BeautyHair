@@ -50,7 +50,7 @@ foreach ($cart as $item) {
                         <div class="pe-2"><i class="fs-5 fa-solid fa-location-dot"></i></div>
                         <div>
                             <strong> Address</strong>
-                            <p><a href="../main_page/map.php">View the map</a></p>
+                            <div><a href="../main_page/map.php">View the map</a></div>
                         </div>
                     </div>
                     <div class="d-inline-flex justify-content-center align-items-center">
@@ -62,11 +62,12 @@ foreach ($cart as $item) {
                                 $current_account = $_SESSION['account_id'];
                                 $thisAccout = mysqli_query($connect, "SELECT * FROM account WHERE id = $current_account");
                                 $accout_current_name = mysqli_fetch_assoc($thisAccout);
-                                echo '<strong>Hello, ' . $accout_current_name['username'] . '</strong>';
-                                echo '<p><a href="../handle/logout.php">Logout</a></p>';
+                                // echo '<p >Hello, <span class="user-logged text-dark">' . $accout_current_name['username'] . '</span></p>';
+                                echo '<strong>Hello, <span >' . $accout_current_name['username'] . '<div></div></span></strong>';
+                                echo '<div><a href="../handle/logout.php">Logout</a></div>';
                             } else {
                                 echo '<strong> Account</strong>';
-                                echo '<p><a href="../main_page/login.php">Login</a></p>';
+                                echo '<div><a href="../main_page/login.php">Login</a></div>';
                             }
                             ?>
 
@@ -77,7 +78,7 @@ foreach ($cart as $item) {
                         <div class="pe-2"><a href="../main_page/cart.php"><i class="fa-solid fa-cart-shopping"></i></a></div>
                         <div>
                             <strong> Cart</strong>
-                            <p><span><?= $count ?></span> product</p>
+                            <div><span><?= $count ?></span> product</div>
                         </div>
                     </div>
                 </div>
@@ -90,15 +91,22 @@ foreach ($cart as $item) {
                 <a class="nav-link  after-bar" href="../main_page/products.php">PRODUCTS <i class="fa-solid fa-chevron-down"></i></a>
                 <div class="subnav d-none justify-content-around shadow">
                     <div>
-                        <strong>Daily hair care</strong>
-                        <div><a href="">Brushing Hair, Easy But Not Easy</a></div>
-                        <div><a href="">5 Secrets of Perfect Hair Care</a></div>
-                        <div><a href="">Hair Care, Nurturing and Gentle</a></div>
+                        <strong>Cosmetics</strong>
+                        <div><a href="">Cream</a></div>
+                        <div><a href="">Shampoo</a></div>
+                        <div><a href="">Mask</a></div>
+                        <div><a href="">Serum</a></div>
+                        <div><a href="">Oil</a></div>
                     </div>
                     <div>
-                        <strong>Hair problems</strong>
-                        <div><a href="">Common diseases & <br>remedies</a></div>
+                        <strong>Cosmetics</strong>
+                        <div><a href="">Cream</a></div>
+                        <div><a href="">Shampoo</a></div>
+                        <div><a href="">Mask</a></div>
+                        <div><a href="">Serum</a></div>
+                        <div><a href="">Oil</a></div>
                     </div>
+
                 </div>
             </div>
             <div class="sub-nav-bar">
@@ -122,3 +130,13 @@ foreach ($cart as $item) {
             <div><a class="nav-link  " href="">EQUIPMENT</a></div>
         </div>
     </header>
+    <script>
+        let userLogged = document.querySelector('.user-logged div');
+        userLogged.innerHTML = `<ul class="">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        `;
+    </script>

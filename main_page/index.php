@@ -6,7 +6,7 @@ include("../components/header.php");
 
 
 ?>
-<?php 
+<?php
 
 ?>
 <section>
@@ -59,7 +59,7 @@ include("../components/header.php");
                 ?>
                     <div>
                         <div class="text-center">
-                            <a href="./products_detail.php?products=<?=$cream['id']?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $cream['url'] ?>" alt=""></a>
+                            <a href="./products_detail.php?products=<?= $cream['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $cream['url'] ?>" alt=""></a>
                             <div class="text-center fs-4">
                                 <i onclick="addToCart(<?= $cream['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
                                 <p><?= $cream['name'] ?></p>
@@ -78,7 +78,7 @@ include("../components/header.php");
                 ?>
                     <div>
                         <div class="text-center">
-                            <a href="./products_detail.php?products=<?=$shampoo['id']?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $shampoo['url'] ?>" alt=""></a>
+                            <a href="./products_detail.php?products=<?= $shampoo['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $shampoo['url'] ?>" alt=""></a>
                             <div class="text-center fs-4">
                                 <i onclick="addToCart(<?= $shampoo['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
                                 <p><?= $shampoo['name'] ?></p>
@@ -97,7 +97,7 @@ include("../components/header.php");
                 ?>
                     <div>
                         <div class="text-center">
-                            <a href="./products_detail.php?products=<?=$mask['id']?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $mask['url'] ?>" alt=""></a>
+                            <a href="./products_detail.php?products=<?= $mask['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $mask['url'] ?>" alt=""></a>
                             <div class="text-center fs-4">
                                 <i onclick="addToCart(<?= $mask['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
                                 <p><?= $mask['name'] ?></p>
@@ -116,7 +116,7 @@ include("../components/header.php");
                 ?>
                     <div>
                         <div class="text-center">
-                            <a href="./products_detail.php?products=<?=$serum['id']?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $serum['url'] ?>" alt=""></a>
+                            <a href="./products_detail.php?products=<?= $serum['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $serum['url'] ?>" alt=""></a>
                             <div class="text-center fs-4">
                                 <i onclick="addToCart(<?= $serum['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
                                 <p><?= $serum['name'] ?></p>
@@ -135,7 +135,7 @@ include("../components/header.php");
                 ?>
                     <div>
                         <div class="text-center">
-                            <a href="./products_detail.php?products=<?=$other['id']?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $other['url'] ?>" alt=""></a>
+                            <a href="./products_detail.php?products=<?= $other['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $other['url'] ?>" alt=""></a>
                             <div class="text-center fs-4">
                                 <i onclick="addToCart(<?= $other['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
                                 <p><?= $other['name'] ?></p>
@@ -225,20 +225,55 @@ include("../components/header.php");
 </section>
 
 <section class="home-news-events">
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
+    <div class="container ">
+        <div class="row d-flex">
+            <div class="w-50">
                 <h3>News</h3>
+                <div class="text-center shadow bg-white">
+                    <a class="text-decoration-none text-center" href="">
+                        <img class="w-100" style="cursor: pointer;" src="../resources/img/img_news/NYFW.jpg" alt="">
+                        <strong style="cursor: pointer;" class="fs-4 w-75  text-dark py-4">NEW YORK FASHION WEEK(NYFW)</strong>
+                    </a>
+                    <div class="p-2">
+                        <span class="w-50 py-1 fw-light">No doubt Jonathan Simkhais Spring 2018 Ready-to-Wear collection had a sense of airiness about it — something weve long been waiting for from one of our favorite designers. Its an essence he carried from head to hip to toe,..</span>
+                    </div>
+                </div>
+
             </div>
-            <div class="col-6">
-                <h3>Events</h3>
+            <div class="w-50">
+                <h3>Guide</h3>
+                <div class="home-guide container">
+                    <div style="margin-bottom: 30px" class=" d-flex shadow">
+                        <div class="col-6">
+                            <img class="w-75" src="../resources/img/img_news/NYFW2.jpg" alt="">
+                        </div>
+                        <div class="w-50 p-2">
+                            <strong>Guide1</strong>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 31px" class="d-flex shadow">
+                        <div class="w-50">
+                            <img class="w-75" src="../resources/img/img_news/NYFW2.jpg" alt="">
+                        </div>
+                        <div class="w-50 p-2">
+                            <strong class="">Guide2</strong>
+                        </div>
+                    </div>
+                    <div class="d-flex shadow">
+                        <div class="w-50 ">
+                            <img class="w-75" src="../resources/img/img_news/NYFW2.jpg" alt="">
+                        </div>
+                        <div class="w-50 p-2">
+                            <strong>Guide3</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <script type="text/javascript">
-
     function addToCart(id) {
         $.post('../api/cookie.php', {
             'action': 'add',
@@ -248,8 +283,6 @@ include("../components/header.php");
             $("#totalCart").load("index.php #totalCart")
         })
     }
-
-    
 </script>
 
 <?php

@@ -1,3 +1,5 @@
+
+
 <footer class="footer-web">
     <div class="container">
         <div class="row">
@@ -30,9 +32,23 @@
         </div>
     </div>
 </footer>
+<script type="text/javascript">
+    
+
+    function addToCart(id) {
+        $.post('../api/cookie.php', {
+            'action': 'add',
+            'id': id,
+            'num': 1
+        }, (data) => {
+            $("#totalCart").load("../components/header.php #totalCart")
+        })
+    }
+</script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script src="../resources/js/main7.js"></script>
+<script src="../resources/js/main8.js"></script>
 <script src="../resources/js/sliderSwiper.js"></script>
 </body>
 
