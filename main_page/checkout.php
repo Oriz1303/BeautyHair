@@ -23,6 +23,8 @@ if (count($idList) > 0) {
 } else {
 	$cartList = [];
 }
+
+
 ?>
 <!-- body -->
 <div class="container pt-3 fw-light fs-5">
@@ -36,7 +38,7 @@ if (count($idList) > 0) {
 				<h3>Shipping Information</h3>
 				<div class="form-group">
 					<label for="usr">Name:</label>
-					<input type="text" class="form-control" id="usr" value="" placeholder="Ex: Nguyen Van A" rules="required" name="fullname">
+					<input type="text" class="form-control" id="usr" value="<?php  ?>" placeholder="Ex: Nguyen Van A" rules="required" name="fullname">
 					<span class="form-message text-danger"></span>
 				</div>
 				<div class="form-group">
