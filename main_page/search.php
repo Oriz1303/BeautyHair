@@ -3,8 +3,11 @@ require_once('../database/helper.php');
 include "../components/header.php";
 
 $total = 0;
+$termSearch = '';
 if (isset($_POST['submit'])) {
-    if (isset($_POST['termSearch'])) {
+    if (empty($_POST['termSearch'])) {
+        $total = 0;
+    } else if (!empty($_POST['termSearch'])) {
         $termSearch = trim($_POST['termSearch']);
         $sql = executeResult("SELECT * FROM information_products  WHERE name LIKE '%$termSearch%' ");
         foreach ($sql as $key1 => $value1) {
@@ -20,25 +23,29 @@ if (isset($_POST['submit'])) {
 <hr>
 
 <div class="container">
-    <h2>Found <?=$total?> products "<?=$termSearch?>"</h2>
+    <h2>Found <?= $total ?> products "<?= $termSearch ?>"</h2>
     <div class="row">
         <div class="col-12">
             <div class="grid-containers">
                 <?php
-                foreach ($sql as $key => $item) {
+                if (isset($sql)) {
+                    foreach ($sql as $key => $item) {
                 ?>
-                    <div class="grid item">
-                        <a href="products_detail.php?products=<?= $item['id'] ?>"><img class="w-50" src="../resources/img/img_cosmetics/<?= $item['url'] ?>" alt=""></a>
-                        <div class="text-center fs-5">
-                            <i onclick="addToCart(<?= $item['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
-                            <p><?= $item['name'] ?></p>
-                            <p class="fs-6 fw-light">$ <?= $item['price'] ?></p>
+                        <div class="grid item">
+                            <a href="products_detail.php?products=<?= $item['id'] ?>"><img class="w-50" src="../resources/img/img_cosmetics/<?= $item['url'] ?>" alt=""></a>
+                            <div class="text-center fs-5">
+                                <i onclick="addToCart(<?= $item['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
+                                <p><?= $item['name'] ?></p>
+                                <p class="fs-6 fw-light">$ <?= $item['price'] ?></p>
+                            </div>
                         </div>
-                    </div>
                 <?php
+                    }
+                } else {
+                    echo '';
                 }
                 ?>
-                
+
             </div>
         </div>
     </div>

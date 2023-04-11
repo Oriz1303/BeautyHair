@@ -29,7 +29,6 @@ foreach ($cart as $item) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
 </head>
 
 <body>
@@ -64,7 +63,7 @@ foreach ($cart as $item) {
                                 $accout_current_name = mysqli_fetch_assoc($thisAccout);
                                 // echo '<p >Hello, <span class="user-logged text-dark">' . $accout_current_name['username'] . '</span></p>';
                                 echo '<strong>Hello, <span >' . $accout_current_name['username'] . '<div></div></span></strong>';
-                                echo '<div><a href="../handle/logout.php">Logout</a></div>';
+                                echo '<div><a href="../handle/logout.php">Logout</a></div><span><a href="history.php">History</a></span>';
                             } else {
                                 echo '<strong> Account</strong>';
                                 echo '<div><a href="../main_page/login.php">Login</a></div>';
@@ -131,12 +130,12 @@ foreach ($cart as $item) {
         </div>
     </header>
     <script>
-        let userLogged = document.querySelector('.user-logged div');
-        userLogged.innerHTML = `<ul class="">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-        </ul>
-        `;
+        // let userLogged = document.querySelector('.user-logged div');
+        // userLogged.innerHTML = `<ul class="">
+        //     <li>1</li>
+        //     <li>2</li>
+        //     <li>3</li>
+        //     <li>4</li>
+        // </ul>
+        // `;
     </script>

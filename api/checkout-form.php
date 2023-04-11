@@ -16,6 +16,7 @@ if (!empty($_POST)) {
 	$email = getPost('email');
 	$phone_number = getPost('phone_number');
 	$address = getPost('address') . ', ' . getPost('province') . ', ' . getPost('district') . '.';
+	date_default_timezone_set('Asia/Saigon');
 	$orderDate = date('Y-m-d H:i:s');
 	echo $address;
 

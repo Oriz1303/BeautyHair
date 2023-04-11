@@ -9,7 +9,7 @@ include("../components/header.php");
 <?php
 
 ?>
-<section>
+<section class="m-0">
     <div class="swiper home-slider-news">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img class="w-100" src="../resources/img/home-slider-news-1.jpg" alt=""></div>
@@ -20,14 +20,15 @@ include("../components/header.php");
     </div>
 </section>
 
-<section>
+<section >
+    <div style="background-image: url(../resources/img/thumbnail.jpg);height:155px;"></div>
     <div class="container">
         <div class="row">
-            <div class="col-12 d-flex justify-content-center">
+            <!-- <div class="col-12 d-flex justify-content-center">
                 <img src="../resources/img/home-bg-products-1.jpg" alt="">
                 <img src="../resources/img/home-bg-products-2.jpg" alt="">
                 <img src="../resources/img/home-bg-products-3.jpg" alt="">
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
@@ -67,6 +68,16 @@ include("../components/header.php");
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <div class="text-center">
+                            <a href="./products_detail.php?products=<?= $cream['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $cream['url'] ?>" alt=""></a>
+                            <div class="text-center fs-4">
+                                <i onclick="addToCart(<?= $cream['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
+                                <p><?= $cream['name'] ?></p>
+                                <p class="fs-5 fw-light">$ <?= $cream['price'] ?></p>
+                            </div>
+                        </div>
+                    </div>
                 <?php
                 }
                 ?>
@@ -76,6 +87,16 @@ include("../components/header.php");
                 $resultShampoo = executeResult("SELECT * FROM information_products WHERE title=2");
                 foreach ($resultShampoo as $shampoo) {
                 ?>
+                    <div>
+                        <div class="text-center">
+                            <a href="./products_detail.php?products=<?= $shampoo['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $shampoo['url'] ?>" alt=""></a>
+                            <div class="text-center fs-4">
+                                <i onclick="addToCart(<?= $shampoo['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
+                                <p><?= $shampoo['name'] ?></p>
+                                <p class="fs-5 fw-light">$ <?= $shampoo['price'] ?></p>
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <div class="text-center">
                             <a href="./products_detail.php?products=<?= $shampoo['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $shampoo['url'] ?>" alt=""></a>
@@ -105,6 +126,16 @@ include("../components/header.php");
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <div class="text-center">
+                            <a href="./products_detail.php?products=<?= $mask['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $mask['url'] ?>" alt=""></a>
+                            <div class="text-center fs-4">
+                                <i onclick="addToCart(<?= $mask['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
+                                <p><?= $mask['name'] ?></p>
+                                <p class="fs-5 fw-light">$ <?= $mask['price'] ?></p>
+                            </div>
+                        </div>
+                    </div>
                 <?php
                 }
                 ?>
@@ -114,6 +145,16 @@ include("../components/header.php");
                 $resultSerum = executeResult("SELECT * FROM information_products WHERE title=4");
                 foreach ($resultSerum as $serum) {
                 ?>
+                    <div>
+                        <div class="text-center">
+                            <a href="./products_detail.php?products=<?= $serum['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $serum['url'] ?>" alt=""></a>
+                            <div class="text-center fs-4">
+                                <i onclick="addToCart(<?= $serum['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
+                                <p><?= $serum['name'] ?></p>
+                                <p class="fs-5 fw-light">$ <?= $serum['price'] ?></p>
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <div class="text-center">
                             <a href="./products_detail.php?products=<?= $serum['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $serum['url'] ?>" alt=""></a>
@@ -143,6 +184,16 @@ include("../components/header.php");
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <div class="text-center">
+                            <a href="./products_detail.php?products=<?= $other['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $other['url'] ?>" alt=""></a>
+                            <div class="text-center fs-4">
+                                <i onclick="addToCart(<?= $other['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
+                                <p><?= $other['name'] ?></p>
+                                <p class="fs-5 fw-light">$ <?= $other['price'] ?></p>
+                            </div>
+                        </div>
+                    </div>
                 <?php
                 }
                 ?>
@@ -161,7 +212,7 @@ include("../components/header.php");
     <img class="" src="../resources/img/home-bg-cosmetics-1.jpg" alt="">
 </section> -->
 
-<section class="icons-container  py-4">
+<section class="icons-container  py-4" style="background-image: url(../resources/img/thumbnail.jpg);">
 
     <div class="icons">
         <img src="../resources/img/icon-1.png" alt="">

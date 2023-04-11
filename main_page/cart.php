@@ -19,6 +19,7 @@ if (count($idList) > 0) {
     $cartList = [];
 }
 $id = getGet('id');
+
 $btnCheckout = '';
 if (count($cart) == 0) {
     $nothingCart = "Nothing in Cart";
