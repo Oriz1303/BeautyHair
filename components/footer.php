@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-4">
                 <p class="brand">N A T U R E</p>
-                <p class="text-white">Nhờ sự ủng hộ mạnh mẽ từ những người có cùng đam mê khắp nơi trên cả nước, chúng tôi tự hào là một trong những Skateshops chuyên nghiệp nhất Việt Nam ở thời điểm hiện tại.</p>
+                <p class="text-white">Nhờ sự ủng hộ mạnh mẽ từ những người có cùng đam mê khắp nơi trên cả nước, chúng tôi tự hào là một trong những Nature chuyên nghiệp nhất Việt Nam ở thời điểm hiện tại.</p>
                 <div class="">
                     <strong class="text-white">FOLLOW US</strong>
                     <div class="social-media-brand">
@@ -14,15 +14,28 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <strong class="text-white">FANPAGE</strong>
+            <div class="col-6 mt-3">
+                <strong class="text-white ">FANPAGE</strong><br>
+                <div class="fb-page mt-3" data-href="https://www.facebook.com/profile.php?id=100004411068597" data-tabs="" data-width="500" data-height="200" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
             </div>
-            <div class="col-4">
-                <strong class="text-white">ADDRESS</strong>
+            <div class="col-2 mt-3">
+                <strong class="text-white">INFOMATION</strong>
+                <div class="text-white mt-3">
+                    <p class="m-0">Address: </p>
+                    <p class="text-secondary">54 Le Thanh Nghi, Ha Noi</p>
+                </div>
+                <div class="text-white mt-3">
+                    <p class="m-0">Phone: </p>
+                    <p class="text-secondary">0123456789</p>
+                </div>
+                <div class="text-white mt-3">
+                    <p class="m-0">Email: </p>
+                    <p class="text-secondary">email@gmail.com</p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="bg-dark py-3">
+    <div class="bg-dark py-3 ">
         <div class="container ">
             <div class="row">
                 <div class="col-12 text-white">© Copyright TEAM FOUR</div>
@@ -30,6 +43,7 @@
         </div>
     </div>
 </footer>
+
 <script type="text/javascript">
     function addToCart(id) {
         num = $('#quantity-product').val();

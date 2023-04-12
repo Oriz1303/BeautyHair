@@ -11,11 +11,18 @@ if (!empty($_POST)) {
 		ob_end_flush();
 		die();
 	}
-
+	$province = "";
+	if($_POST['province']) {
+		$province_id = getPost('province');
+		$resultProvince = executeResult("SELECT * FROM province WHERE id = $province_id");
+		foreach($resultProvince as $value) {
+			$province = $value['_name'];
+		}
+	}
 	$fullname = getPost('fullname');
 	$email = getPost('email');
 	$phone_number = getPost('phone_number');
-	$address = getPost('address') . ', ' . getPost('province') . ', ' . getPost('district') . '.';
+	$address = getPost('address') . ', ' . getPost('district') . ', ' . $province . '.';
 	date_default_timezone_set('Asia/Saigon');
 	$orderDate = date('Y-m-d H:i:s');
 	echo $address;

@@ -198,6 +198,7 @@ include("../components/header.php");
 
 
 
+
 <!-- <section class="home-bg-cosmetics">
 
     <img class="" src="../resources/img/home-bg-cosmetics-1.jpg" alt="">
@@ -314,6 +315,7 @@ include("../components/header.php");
         </div>
     </div>
 </section>
+
 
 <script type="text/javascript">
     function addToCart(id) {

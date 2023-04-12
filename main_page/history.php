@@ -24,7 +24,7 @@ $user = $historyEmpty =  '';
                     <th>Name</th>
                     <th>Products</th>
                     <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Total</th>
                     <th>Time</th>
                     <th>Status</th>
                 </tr>
@@ -42,9 +42,9 @@ $user = $historyEmpty =  '';
                             <tr>
                                 <td><?= $count ?></td>
                                 <td><?= $value['fullname'] ?></td>
-                                <td><img class="w-25" src="../resources/img/img_cosmetics/<?= $value['thumbnail'] ?>" alt=""><?= $value['name'] ?></td>
+                                <td><img class="w-25" src="../resources/img/img_cosmetics/<?= $value['url'] ?>" alt=""><?= $value['name'] ?></td>
                                 <td><?= $value['quantity'] ?></td>
-                                <td><?= $value['price'] ?></td>
+                                <td><?= $value['price'] * $value['quantity'] ?></td>
                                 <td><?= $value['date'] ?></td>
                                 <td><?= $value['status'] ?></td>
                             </tr>

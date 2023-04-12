@@ -44,32 +44,63 @@ if (count($idCompare) > 0) {
 }
 ?>
 
+<style>
+    .displayListComesticsParent {
+
+    }
+
+    
+    .displayListComestics:hover {
+        animation: rotate 1s linear;
+    }
+</style>
+
 <div class="container pt-3 fw-light fs-5">
     <a class="text-decoration-none text-dark " href="../main_page/index.php">Home</a><span class=""> > Cosmetics</span>
 </div>
 <hr>
 <div class="container">
     <div class="row w-100 mx-5">
-        <div class="col-2 fs-4 fw-bold contact">
-            <div class="">List</div>`
+        <div class="col-2  contact1">
+            <div class="fs-4 fw-bold">List</div>
+            <div class="row py-2">
+                <div class="col-8"><span>Comestics</span>
+                </div>
+                <div class="col-4 displayListComesticsParent">
+                    <i class="displayListComestics fa-solid fs-6 fa-chevron-down"></i>
+                    <i class="fa-solid fs-6 fa-chevron-up d-none"></i>
+                </div>
+            </div>
+            <ul class="ps-2 text-decoration-none text-dark" style="list-style-type: none;">
+                <li><a href="">Cream</a></li>
+                <li><a href="">Shampoo</a></li>
+                <li><a href="">Mask</a></li>
+                <li><a href="">Serum</a></li>
+                <li><a href="">Hairsprays</a></li>
+                <li><a href="">Oils</a></li>
+            </ul>
         </div>
         <div class="col-10">
             <div class="container w-100">
-                <div class="row">
-                    <p class="w-50 fw-bold fs-4">COSMETICS <span class="fw-light fs-5">(<?php foreach ($sqlCount as $count) {
-                                                                                            echo $count['count'];
-                                                                                        } ?> products)</span></p>
-                    <p class="w-50 d-flex justify-content-end">Order</p>
-                    <hr>
-                </div>
+
 
                 <?php
                 if (isset($_GET['cate'])) {
                     $cate = getGet('cate');
                     $resultCate = executeResult("SELECT * FROM information_products WHERE title = $cate");
+                    $resultCategories = executeResult("SELECT * FROM products_categories WHERE id = $cate");
+                ?>
+                    <div class="row">
+                        <p class="w-50 fw-bold fs-2"><?php foreach ($resultCategories as $value) {
+                                                            echo $value['categories'];
+                                                        }; ?> <span class="fw-light fs-5">(<?= count($resultCate) ?> products)</span></p>
+                        <p class="w-50 d-flex justify-content-end">Order</p>
+                        <hr>
+                    </div>
+                    <?php
                     echo '<div class="grid-containers">';
                     foreach ($resultCate as $value) {
-                ?>
+                    ?>
                         <div class="grid-items">
                             <a href="products_detail.php?products=<?= $value['id'] ?>"><img class="list-products-image" src="../resources/img/img_cosmetics/<?= $value['url'] ?>" alt=""></a>
                             <div class="text-center fs-5">
@@ -84,6 +115,15 @@ if (count($idCompare) > 0) {
                     }
                     echo '</div>';
                 } else {
+                    ?>
+                    <div class="row">
+                        <p class="w-50 fw-bold fs-2">COSMETICS <span class="fw-light fs-5">(<?php foreach ($sqlCount as $count) {
+                                                                                                echo $count['count'];
+                                                                                            } ?> products)</span></p>
+                        <p class="w-50 d-flex justify-content-end">Order</p>
+                        <hr>
+                    </div>
+                    <?php
                     echo '<div class="grid-containers">';
                     foreach ($sqlProducts as $row) {
                     ?>
@@ -107,7 +147,7 @@ if (count($idCompare) > 0) {
                         <nav class="" aria-label="">
                             <ul class="pagination d-flex align-items-center">
                                 <li class="page-item"><a class="border-0 page-link text-decoration-none text-center <?= ($pageNo <= 1) ? 'disabled' : ''; ?>" href="<?= ($pageNo > 1) ? 'products.php?page_no=' . $previousPage : ''; ?>">
-                                        <</a>
+                                        << /a>
                                 </li>
                                 <?php for ($counter = 1; $counter <= $totalNoOfPages; $counter++) { ?>
                                     <li class="page-item"><a class="px-2 text-decoration-none text-center text-dark" href="products.php?page_no=<?= $counter ?>"><?= $counter ?></a></li>

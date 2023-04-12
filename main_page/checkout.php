@@ -60,7 +60,7 @@ if (count($idList) > 0) {
 							$resultCity = executeResult("SELECT * FROM province");
 							foreach ($resultCity as $key => $city) {
 							?>
-								<option value="<?= $city['id'] ?>"><?= $city['_name'] ?></option>
+								<option class="" value="<?= $city['id'] ?>"><?= $city['_name'] ?></option>
 							<?php } ?>
 						</select>
 						<select class="w-50 border" name="district" rules="required" id="district">
@@ -68,7 +68,7 @@ if (count($idList) > 0) {
 							<?php
 							$resultDistrict = executeResult("SELECT * FROM district");
 							foreach ($resultDistrict as $key => $district) { ?>
-								<option value="<?= $district['_province_id'] ?>"><?= $district['_name'] ?></option>
+								<option class="<?= $district['_province_id'] ?>" value="<?= $district['_name'] ?>"><?= $district['_name'] ?></option>
 							<?php } ?>
 						</select>
 					</div>
@@ -113,10 +113,10 @@ if (count($idList) > 0) {
 							$total += $num * $item['price'];
 						?>
 							<tr>
-								<td><img style="width:2vw" class="" src="../resources/img/img_cosmetics/<?=$item['url']?>" alt=""> <?=$item['name']?></td>
-								<td><?=$num?></td>
-								<td><?=number_format($item['price'], 2, ',', '.')?></td>
-								<td><?=number_format($num * $item['price'], 2, ',', '.')?></td>
+								<td><img style="width:2vw" class="" src="../resources/img/img_cosmetics/<?= $item['url'] ?>" alt=""> <?= $item['name'] ?></td>
+								<td><?= $num ?></td>
+								<td><?= number_format($item['price'], 2, ',', '.') ?></td>
+								<td><?= number_format($num * $item['price'], 2, ',', '.') ?></td>
 							</tr>
 						<?php
 						}
@@ -140,7 +140,7 @@ if (count($idList) > 0) {
 <script>
 	Validator('#shipping-info')
 </script>
-<script src="../resources/js/checkout2.js"></script>
+<script src="../resources/js/checkout3.js"></script>
 <?php
 include_once('../components/footer.php');
 ?>

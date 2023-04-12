@@ -13,7 +13,7 @@ if (isset($_POST['signinUsername']) && isset($_POST['signinPassword'])) {
             header("location: index.php");
             ob_end_flush();
         } else {
-            header("location: admin.php");
+            header("location: ../admin/index.php");
             ob_end_flush();
         }
     } else {
