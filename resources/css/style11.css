@@ -52,8 +52,12 @@ section {
 
 /* ------------------------------------COMMON TAG END-------------------------------------------------- */
 
-
-
+/* SWIPER start */
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after,
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+    font-size: 2rem;
+}
+/* SWIPER  end*/
 /* ------------------------------------HEADER START-------------------------------------------------- */
 
 .search-bar {
@@ -245,8 +249,22 @@ header .nav-bar .nav-link:hover {
 }
                                                 /* contact  end*/
 
-.home-guide {
-    
+.list-products-image {
+    min-width: 9vw;
+    max-width: 9vw;
+}
+
+.detail-content {
+    display: none;
+}
+
+.detail-content.activeDisplay {
+    display: block;
+}
+
+.desProduct .col-6.my-5 > * {
+    margin-bottom: 20px;
+
 }
 
 /* ------------------------------------CONTENT END-------------------------------------------------- */

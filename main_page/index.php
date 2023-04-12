@@ -68,16 +68,7 @@ include("../components/header.php");
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="text-center">
-                            <a href="./products_detail.php?products=<?= $cream['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $cream['url'] ?>" alt=""></a>
-                            <div class="text-center fs-4">
-                                <i onclick="addToCart(<?= $cream['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
-                                <p><?= $cream['name'] ?></p>
-                                <p class="fs-5 fw-light">$ <?= $cream['price'] ?></p>
-                            </div>
-                        </div>
-                    </div>
+                    
                 <?php
                 }
                 ?>

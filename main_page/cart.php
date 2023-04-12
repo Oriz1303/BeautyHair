@@ -40,7 +40,7 @@ if (count($cart) == 0) {
     </div>
     <div class="row">
         <div class="col-md-12">
-            <table id="list-item" class="table ">
+            <table id="listItem" class="table ">
                 <thead>
                     <tr>
                         <th>Products</th>
@@ -48,7 +48,6 @@ if (count($cart) == 0) {
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Total</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,20 +59,19 @@ if (count($cart) == 0) {
                         $num = 0;
                         foreach ($cart as $value) {
                             if ($value['id'] == $item['id']) {
-                                $num = $value['num'];
+                                $num = (int)$value['num'];
                                 break;
                             }
                         }
-                        $total +=  $num * $item['price'];
+                        $total +=  (int)$num * (int)$item['price'];
                         echo
                         '<tr class="">
                             <td class="text-center"><img src="../resources/img/img_cosmetics/' . $item['url'] . '"style="height:100px"/></td>
                             <td class="fs-5 fw-light">' . $item['name'] . ' <br>
-                            <i style="font-size:10px" onclick="deleteCart(' . $item['id'] . ')" class="fa-solid fa-x pe-auto"></i> <span class="fs-6">Delete</span></td>
-                            <td>' . $num . '</td>
+                            <i style="font-size:10px; cursor: pointer;" onclick="deleteCart(' . $item['id'] . ')" class="fa-solid fa-x pe-auto"></i> </td>
+                            <td><input pattern="\d[1,2]"   min="1" style="width:4vw" onchange="quantityCart(' . $item['id'] . ')" class="border rounded-pill text-center p-2" type="number" value=' . $num . '></td>
                             <td>' . number_format($item['price'], 2, '.', ',') . '</td>
                             <td>' . number_format($num * $item['price'], 2, '.', ',') . '</td>
-                            <td><button class="btn btn-warning" onclick="addToCart(' . $item['id'] . ')">Add</button></td>
                             </tr>';
                     }
                     ?>
@@ -107,21 +105,37 @@ if (count($cart) == 0) {
             'action': 'delete',
             'id': id
         }, function(data) {
-            location.reload()
+            $("#totalCart").load("../components/header.php #totalCart");
+            $('#totalOrder').load("cart.php #totalOrder");
+            $('#listItem').load("cart.php #listItem");
         })
     }
 
-    function addToCart(id) {
+    function quantityCart(id) {
+        num = $('#quantity-cart').val();
         $.post('../api/cookie.php', {
             'action': 'add',
             'id': id,
-            'num': 1
-        }, function(data) {
-            $('#totalCart').load("cart.php #totalCart")
-            $('#list-item').load("cart.php #list-item")
-            $('#totalOrder').load("cart.php #totalOrder")
-        });
+            'num': Number(num) ? Number(num) : 1
+        }, (data) => {
+            $("#totalCart").load("../components/header.php #totalCart");
+            $('#totalOrder').load("cart.php #totalOrder");
+            $('#listItem').load("cart.php #listItem");
+        })
     }
+    // function addToCart(id) {
+    //     $.post('../api/cookie.php', {
+    //         'action': 'add',
+    //         'id': id,
+    //         'num': 1
+    //     }, function(data) {
+    //         // document.getElementById('listItem').load('cart.php #listItem')
+    //         $('#listItem').load("cart.php #listItem");
+    //         $('#totalCart').load("cart.php #totalCart");
+    //         $('#totalOrder').load("cart.php #totalOrder");
+    //         location.reload();
+    //     });
+    // }
 </script>
 
 <?php require_once('../components/footer.php'); ?>

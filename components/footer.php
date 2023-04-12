@@ -1,5 +1,3 @@
-
-
 <footer class="footer-web">
     <div class="container">
         <div class="row">
@@ -33,15 +31,27 @@
     </div>
 </footer>
 <script type="text/javascript">
-    
-
     function addToCart(id) {
+        num = $('#quantity-product').val();
+        console.log(num)
+        $.post('../api/cookie.php', {
+            'action': 'add',
+            'id': id,
+            'num': Number(num) ? Number(num) : 1
+        }, (data) => {
+            $("#totalCart").load("../components/header.php #totalCart");
+            $('#totalOrder').load("cart.php #totalOrder");
+            $('#listItem').load("cart.php #listItem");
+        })
+    }
+
+    function buyNow(id) {
         $.post('../api/cookie.php', {
             'action': 'add',
             'id': id,
             'num': 1
         }, (data) => {
-            $("#totalCart").load("../components/header.php #totalCart")
+            window.location = "cart.php";
         })
     }
 </script>

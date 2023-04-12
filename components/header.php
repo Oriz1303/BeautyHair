@@ -8,7 +8,7 @@ if (isset($_COOKIE['cart'])) {
 }
 $count = 0;
 foreach ($cart as $item) {
-    $count += $item['num'];
+    $count += (int)$item['num'];
 }
 ?>
 <!DOCTYPE html>
@@ -19,7 +19,7 @@ foreach ($cart as $item) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/style7.css">
+    <link rel="stylesheet" href="../resources/css/style11.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="../resources/css/bootstrap.min.css"> -->
     <!-- lam cai gi ay nhi loi gi -->
@@ -91,20 +91,14 @@ foreach ($cart as $item) {
                 <div class="subnav d-none justify-content-around shadow">
                     <div>
                         <strong>Cosmetics</strong>
-                        <div><a href="">Cream</a></div>
-                        <div><a href="">Shampoo</a></div>
-                        <div><a href="">Mask</a></div>
-                        <div><a href="">Serum</a></div>
-                        <div><a href="">Oil</a></div>
+                        <div><a href="products.php?cate=1">Cream</a></div>
+                        <div><a href="products.php?cate=2">Shampoo</a></div>
+                        <div><a href="products.php?cate=3">Mask</a></div>
+                        <div><a href="products.php?cate=4">Serum</a></div>
+                        <div><a href="products.php?cate=5">Hairspray</a></div>
+                        <div><a href="products.php?cate=6">Oil</a></div>
                     </div>
-                    <div>
-                        <strong>Cosmetics</strong>
-                        <div><a href="">Cream</a></div>
-                        <div><a href="">Shampoo</a></div>
-                        <div><a href="">Mask</a></div>
-                        <div><a href="">Serum</a></div>
-                        <div><a href="">Oil</a></div>
-                    </div>
+                    
 
                 </div>
             </div>
@@ -124,7 +118,7 @@ foreach ($cart as $item) {
                 </div>
             </div>
             <div>
-                <a class="nav-link  after-bar" href="">NEWS</a>
+                <a class="nav-link  after-bar" href="news.php">NEWS</a>
             </div>
             <div><a class="nav-link  " href="">EQUIPMENT</a></div>
         </div>

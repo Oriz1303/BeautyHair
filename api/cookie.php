@@ -48,10 +48,10 @@ if (!empty($_POST)) {
 
 		case 'compare_add':
 			$isExisted = true;
-			for ($i = 0; $i < 1; $i++) {
+			for ($i = 0; $i <= 1; $i++) {
 				if ($compare[$i]['id_product'] == $id_product) {
 					$isExisted = false;
-				} else if (count($compare) > 2) {
+				} else if (count($compare) > 1) {
 					$isExisted = false;
 				}
 			}
@@ -60,6 +60,15 @@ if (!empty($_POST)) {
 				$compare[] = [
 					'id_product' => $id_product
 				];
+			}
+			setcookie('compare', json_encode($compare), time() + 30 * 24 * 60 * 60, '/');
+			break;
+		case 'compare_delete':
+			for ($i = 0; $i < 2; $i++) {
+				if ($compare[$i]['id_product'] == $id_product) {
+					array_splice($compare, $i, 1);
+					break;
+				}
 			}
 			setcookie('compare', json_encode($compare), time() + 30 * 24 * 60 * 60, '/');
 			break;

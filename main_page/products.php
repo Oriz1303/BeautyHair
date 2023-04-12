@@ -4,6 +4,7 @@ require_once('../utils/utility.php');
 include "../components/header.php";
 // require '../api/handle_compare.php';
 // $result = executeResult("SELECT * FROM information_products");
+
 if (isset($_GET['page_no']) && $_GET['page_no'] !== '') {
     $pageNo = $_GET['page_no'];
 } else {
@@ -49,7 +50,9 @@ if (count($idCompare) > 0) {
 <hr>
 <div class="container">
     <div class="row w-100 mx-5">
-        <div class="col-2">List</div>
+        <div class="col-2 fs-4 fw-bold contact">
+            <div class="">List</div>`
+        </div>
         <div class="col-10">
             <div class="container w-100">
                 <div class="row">
@@ -59,37 +62,64 @@ if (count($idCompare) > 0) {
                     <p class="w-50 d-flex justify-content-end">Order</p>
                     <hr>
                 </div>
-                <div class="grid-containers">
+
+                <?php
+                if (isset($_GET['cate'])) {
+                    $cate = getGet('cate');
+                    $resultCate = executeResult("SELECT * FROM information_products WHERE title = $cate");
+                    echo '<div class="grid-containers">';
+                    foreach ($resultCate as $value) {
+                ?>
+                        <div class="grid-items">
+                            <a href="products_detail.php?products=<?= $value['id'] ?>"><img class="list-products-image" src="../resources/img/img_cosmetics/<?= $value['url'] ?>" alt=""></a>
+                            <div class="text-center fs-5">
+                                <i onclick="addToCart(<?= $value['id'] ?>)" class="fa-solid fa-cart-shopping"></i><br>
+                                <a class="text-decoration-none text-dark" href="products_detail.php?products=<?= $value['id'] ?>"><?= $value['name'] ?></a><br>
+                                <button type="submit" class="compare-product bg-white fs-6 fw-light " onclick="addProductCompare(<?= $value['id'] ?>)">+ Compare</button>
+                                <button type="submit" class="compare-delete bg-white d-none fs-6 fw-light " onclick="deleteProductCompare(<?= $value['id'] ?>)">- Compared</button>
+                                <p class="fs-6 fw-light">$ <?= $value['price'] ?></p>
+                            </div>
+                        </div>
                     <?php
+                    }
+                    echo '</div>';
+                } else {
+                    echo '<div class="grid-containers">';
                     foreach ($sqlProducts as $row) {
                     ?>
                         <div class="grid-item">
-                            <a href="products_detail.php?products=<?= $row['id'] ?>"><img class="w-75" src="../resources/img/img_cosmetics/<?= $row['url'] ?>" alt=""></a>
+                            <a href="products_detail.php?products=<?= $row['id'] ?>"><img class="list-products-image" src="../resources/img/img_cosmetics/<?= $row['url'] ?>" alt=""></a>
                             <div class="text-center fs-5">
-                                <i onclick="addToCart(<?= $row['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
-                                <p><?= $row['name'] ?></p>
-                                <button type="submit" class="compare-product fs-6 fw-light " onclick="addProductCompare(<?= $row['id'] ?>)">+ compare</button>
+                                <i onclick="addToCart(<?= $row['id'] ?>)" class="fa-solid fa-cart-shopping"></i><br>
+                                <a class="text-decoration-none text-dark" href="products_detail.php?products=<?= $row['id'] ?>"><?= $row['name'] ?></a><br>
+                                <button type="submit" class="compare-product bg-white fs-6 fw-light " onclick="addProductCompare(<?= $row['id'] ?>)">+ Compare</button>
+                                <button type="submit" class="compare-delete bg-white d-none fs-6 fw-light " onclick="deleteProductCompare(<?= $row['id'] ?>)">- Compared</button>
                                 <p class="fs-6 fw-light">$ <?= $row['price'] ?></p>
                             </div>
                         </div>
-                    <?php } ?>
-
-
-                    <!-- <div>
+                    <?php }
+                    echo '</div>';
+                    ?>
+                    <div class="text-center my-2">
                         <strong>Page <?= $pageNo; ?> of <?= $totalNoOfPages ?> </strong>
-                    </div> -->
-                </div>
-                <nav class="text-center" aria-label="">
-                    <ul class="pagination ">
-                        <li class="page-item"><a class="page-link text-decoration-none text-center <?= ($pageNo <= 1) ? 'disabled' : ''; ?>" href="<?= ($pageNo > 1) ? 'products.php?page_no=' . $previousPage : ''; ?>">
-                                << /a>
-                        </li>
-                        <?php for ($counter = 1; $counter <= $totalNoOfPages; $counter++) { ?>
-                            <li class="page-item"><a class="px-2 text-decoration-none text-center" href="products.php?page_no=<?= $counter ?>"><?= $counter ?></a></li>
-                        <?php } ?>
-                        <li class="page-item"><a class="page-link text-decoration-none text-center <?= ($pageNo >= $totalNoOfPages) ? 'disabled' : ''; ?>" href="<?= ($pageNo < $totalNoOfPages) ? 'products.php?page_no=' . $nextPage : ''; ?>">></a></li>
-                    </ul>
-                </nav>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <nav class="" aria-label="">
+                            <ul class="pagination d-flex align-items-center">
+                                <li class="page-item"><a class="border-0 page-link text-decoration-none text-center <?= ($pageNo <= 1) ? 'disabled' : ''; ?>" href="<?= ($pageNo > 1) ? 'products.php?page_no=' . $previousPage : ''; ?>">
+                                        <</a>
+                                </li>
+                                <?php for ($counter = 1; $counter <= $totalNoOfPages; $counter++) { ?>
+                                    <li class="page-item"><a class="px-2 text-decoration-none text-center text-dark" href="products.php?page_no=<?= $counter ?>"><?= $counter ?></a></li>
+                                <?php } ?>
+                                <li class="page-item"><a class="border-0 page-link text-decoration-none text-center <?= ($pageNo >= $totalNoOfPages) ? 'disabled' : ''; ?>" href="<?= ($pageNo < $totalNoOfPages) ? 'products.php?page_no=' . $nextPage : ''; ?>">></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                <?php
+                } ?>
+
+
             </div>
         </div>
     </div>
@@ -103,29 +133,57 @@ if (count($idCompare) > 0) {
         left: 0;
         background-color: #ebebeb;
         width: 100%;
-        height: 24vh;
+        height: 16vh;
         z-index: 999;
         margin: 0;
     }
-
-    .close-compare-block {
-        /* float: right; */
-    }
 </style>
 <section id="compare-product" class="d-none shadow">
-    asdasds
-    <div class="container">
-        <div class="close-compare-block">
-            <button class=""><i class="fa-solid fa-xmark"></i></button>
-            <div id="list-compare">
-                <?php
-                foreach ($listCompare as $value) {
-                ?>
-                    <div><?= $value['name'] ?></div>
-                <?php  }
-                ?>
+    <div class="container p-4">
+        <div class="row">
+            <div id="list-compare" class="col-10">
+                <div class="  d-flex justify-content-center">
+                    <?php
+                    $messageCompare = '';
+                    // echo count($listCompare);
+                    if (count($listCompare) < 2) {
+                        $messageCompare = 'You should add more item.';
+                    } else {
+                        $messageCompare = 'Compare other item please remove an item';
+                    }
+                    foreach ($listCompare as $value) {
+                    ?>
+                        <div class="col-6 d-flex">
+                            <div>
+                                <img src="../resources/img/img_cosmetics/<?= $value['url'] ?>" width="100" alt="">
+                            </div>
+                            <div class="mx-4 text-center ">
+                                <a href="products_detail.php?products=<?= $value['id'] ?>" class="fs-4 m-0 text-decoration-none text-dark"><?= $value['name'] ?></a>
+                                <p style="cursor: pointer;" class="fs-6 m-0 fw-light" onclick="deleteProductCompare(<?= $value['id'] ?>)">x Delete</p>
+                            </div>
+                        </div>
+                    <?php  }
+                    ?>
+                </div>
+            </div>
+            <div class="col-2 text-center d-float">
+                <div id="btnCompare">
+                    <?php
+                    if (count($listCompare) == 2) {
+                        echo '<a href="compare.php" class="btn bg-dark text-white rounded-pill w-100 px-4 my-2 shadow">Proceed compare</a>';
+                    } else {
+                        echo '<button class="btn bg-dark text-white rounded-pill w-100 px-4 my-2 shadow">Proceed compare</button>';
+                    }
+                    ?>
+                </div>
+                <button href="compare.php" class="test-note btn bg-danger text-white rounded-pill w-100 px-4 my-2 shadow">Close compare</button>
             </div>
         </div>
+
+        <div id="message-compare" class="text-center ">
+            <p><span class=" text-danger ">Note</span>: Compare only 2 products. <?= $messageCompare ?></p>
+        </div>
+
     </div>
 </section>
 <?php
@@ -137,24 +195,51 @@ include "../components/footer.php"
     let blockCompare = document.getElementById('compare-product');
     console.log(blockCompare)
     let compare = document.querySelectorAll('.compare-product');
-    compare.forEach(product => {
+    let compareDeleteBtn = document.querySelectorAll('.compare-delete');
+    compare.forEach((product, index) => {
         product.addEventListener('click', () => {
-            blockCompare.classList.remove('d-none')
+            if (blockCompare.classList.contains('d-none')) {
+                blockCompare.classList.remove('d-none');
+            }
+            if (compareDeleteBtn[index].classList.contains('d-none')) {
+                compareDeleteBtn[index].classList.remove('d-none');
+                product.classList.add('d-none');
+            }
+        })
+        compareDeleteBtn[index].addEventListener('click', () => {
+            if (product.classList.contains('d-none')) {
+                compareDeleteBtn[index].classList.add('d-none');
+                product.classList.remove('d-none');
+            }
         })
     });
 
-    const closeBlockCompare = document.querySelector('.close-compare-block');
-    closeBlockCompare.onclick = () => {
+    let close = document.querySelector('.test-note');
+    console.log(close)
+    close.addEventListener('click', () => {
         blockCompare.classList.add('d-none');
-        document.cookie = "username=compare; expires=Thu, 01 Jan 1999 00:00:00 UTC; path=/;";
-    }
+    })
 
     function addProductCompare(id) {
         $.post('../api/cookie.php', {
             'action': 'compare_add',
             'id_product': id
         }, function(data) {
-            $('#list-compare').load("products.php #list-compare")
+            $('#list-compare').load("products.php #list-compare");
+            $('#message-compare').load('products.php #message-compare');
+            $('#btnCompare').load('products.php #btnCompare');
+
+        })
+    }
+
+    function deleteProductCompare(id) {
+        $.post('../api/cookie.php', {
+            'action': 'compare_delete',
+            'id_product': id
+        }, function(data) {
+            $('#list-compare').load('products.php #list-compare');
+            $('#message-compare').load('products.php #message-compare');
+            $('#btnCompare').load('products.php #btnCompare');
         })
     }
 </script>

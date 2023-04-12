@@ -27,7 +27,4 @@ include_once('../components/header.php');
         </form>
     </div>
 </div>
-<?php
-include_once('../components/footer.php');
-
-?>
+<?php require_once('../components/footer.php'); ?>
