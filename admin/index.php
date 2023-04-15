@@ -27,12 +27,59 @@ header("content-type:text/html; charset=UTF-8");
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style3.css">
+    <style>
+        .blockList {
+            position: absolute;
+            left: 0;
+            top: 100px;
+            height: 100%;
+            width: 10vw;
+            padding: 20px;
+            text-align: center;
+            background-color: #b0b0b0;
+        }
+    </style>
 </head>
 
 <body>
     <div class="blockList">
-
+        <section class="dashboard">
+            <div class="container ">
+                <div class="sp">
+                    <p>Sản phẩm</p>
+                    <?php
+                    $sql = executeResult("SELECT * FROM `products`");
+                    echo '<span>' . count($sql) . '</span>';
+                    ?>
+                    <p><a href="product/">click here➜</a></p>
+                </div>
+                <div class="sp kh">
+                    <p>Khách hàng</p>
+                    <?php
+                    $sql = executeResult("SELECT * FROM account WHERE status =0 ");
+                    echo '<span>' . count($sql) . '</span>';
+                    ?>
+                    <p><a href="costomer.php">click here➜</a></p>
+                </div>
+                <div class="sp dm">
+                    <p>Danh mục</p>
+                    <?php
+                    $sql = executeResult("SELECT * FROM `products_categories`");
+                    echo '<span>' . count($sql) . '</span>';
+                    ?>
+                    <p><a href="category/index.php">click here➜</a></p>
+                </div>
+                <div class="sp dh">
+                    <p>Đơn hàng</p>
+                    <?php
+                    $sql = executeResult("SELECT * FROM `order_details`");
+                    echo '<span>' . count($sql) . '</span>';
+                    ?>
+                    <p><a href="dashboard.php">click here➜</a></p>
+                </div>
+            </div>
+        </section>
     </div>
     <div id="wrapper">
         <header>
@@ -58,43 +105,7 @@ header("content-type:text/html; charset=UTF-8");
         </div>
         <div class="container">
             <main>
-                <h1>Bảng thống kê</h1>
-                <section class="dashboard">
-                    <div class="table">
-                        <div class="sp">
-                            <p>Sản phẩm</p>
-                            <?php
-                            $sql = executeResult("SELECT * FROM `products`");
-                            echo '<span>' . count($sql) . '</span>';
-                            ?>
-                            <p><a href="product/">xem chi tiết➜</a></p>
-                        </div>
-                        <div class="sp kh">
-                            <p>Khách hàng</p>
-                            <?php
-                            $sql = executeResult("SELECT * FROM account WHERE status =0 ");
-                            echo '<span>' . count($sql) . '</span>';
-                            ?>
-                            <p><a href="costomer.php">xem chi tiết➜</a></p>
-                        </div>
-                        <div class="sp dm">
-                            <p>Danh mục</p>
-                            <?php
-                            $sql = executeResult("SELECT * FROM `products_categories`");
-                            echo '<span>' . count($sql) . '</span>';
-                            ?>
-                            <p><a href="category/index.php">xem chi tiết➜</a></p>
-                        </div>
-                        <div class="sp dh">
-                            <p>Đơn hàng</p>
-                            <?php
-                            $sql = executeResult("SELECT * FROM `order_details`");
-                            echo '<span>' . count($sql) . '</span>';
-                            ?>
-                            <p><a href="dashboard.php">xem chi tiết➜</a></p>
-                        </div>
-                    </div>
-                </section>
+
                 <section class="new-order">
                     <h4>Đơn hàng mới</h4>
                     <table class="table">

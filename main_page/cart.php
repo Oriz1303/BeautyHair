@@ -104,7 +104,7 @@ if (count($cart) == 0) {
         $.post('../api/cookie.php', {
             'action': 'delete',
             'id': id
-        }, function(data) {
+        }, (data) => {
             $("#totalCart").load("../components/header.php #totalCart");
             $('#totalOrder').load("cart.php #totalOrder");
             $('#listItem').load("cart.php #listItem");
@@ -123,19 +123,7 @@ if (count($cart) == 0) {
             $('#listItem').load("cart.php #listItem");
         })
     }
-    // function addToCart(id) {
-    //     $.post('../api/cookie.php', {
-    //         'action': 'add',
-    //         'id': id,
-    //         'num': 1
-    //     }, function(data) {
-    //         // document.getElementById('listItem').load('cart.php #listItem')
-    //         $('#listItem').load("cart.php #listItem");
-    //         $('#totalCart').load("cart.php #totalCart");
-    //         $('#totalOrder').load("cart.php #totalOrder");
-    //         location.reload();
-    //     });
-    // }
+    
 </script>
 
 <?php require_once('../components/footer.php'); ?>

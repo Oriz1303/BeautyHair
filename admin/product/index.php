@@ -20,6 +20,7 @@ require_once('../config/dbhelper.php');
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Quản lý sản phẩm</title>
+    
     <style>
         * {
             margin: 0;
@@ -94,7 +95,7 @@ require_once('../config/dbhelper.php');
                         }
                         $limit = 5;
                         $start = ($page - 1) * $limit;
-                        $sql = "SELECT * FROM products limit $start,$limit";
+                        $sql = "SELECT * FROM information_products limit $start,$limit";
                         executeResult($sql);
                         // $sql = 'select * from product limit $star,$limit';
                         $productList = executeResult($sql);
@@ -104,11 +105,11 @@ require_once('../config/dbhelper.php');
                             echo '  <tr>
                     <td>' . ($index++) . '</td>
                     <td style="text-align:center">
-                        <img src="../' . $item['thumbnail'] . '" alt="" style="width: 50px">
+                        <img src="../' . $item['url'] . '" alt="" style="width: 50px">
                     </td>
-                    <td>' . $item['title'] . '</td>
+                    <td>' . $item['name'] . '</td>
                     <td>' . number_format($item['price'], 0, ',', '.') . ' VNĐ</td>
-                    <td>' . $item['number'] . '</td>
+                    <td>' . $item['quantity'] . '</td>
                     <td>' . $item['content'] . '</td>
                     <td>' . $item['id_category'] . '</td>
                     <td>
@@ -131,8 +132,8 @@ require_once('../config/dbhelper.php');
 
         <ul class="pagination">
             <?php
-            $sql = "SELECT * FROM `product`";
-            $conn = mysqli_connect("localhost", "root", "trong1907", "shop_quanao");
+            $sql = "SELECT * FROM `products`";
+            $conn = mysqli_connect("localhost", "root", "Oriz203031", "haircare");
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result)) {
                 $numrow = mysqli_num_rows($result);

@@ -49,7 +49,7 @@ if (count($idCompare) > 0) {
 
     }
 
-    
+
     .displayListComestics:hover {
         animation: rotate 1s linear;
     }
@@ -147,7 +147,7 @@ if (count($idCompare) > 0) {
                         <nav class="" aria-label="">
                             <ul class="pagination d-flex align-items-center">
                                 <li class="page-item"><a class="border-0 page-link text-decoration-none text-center <?= ($pageNo <= 1) ? 'disabled' : ''; ?>" href="<?= ($pageNo > 1) ? 'products.php?page_no=' . $previousPage : ''; ?>">
-                                        << /a>
+                                        <</a>
                                 </li>
                                 <?php for ($counter = 1; $counter <= $totalNoOfPages; $counter++) { ?>
                                     <li class="page-item"><a class="px-2 text-decoration-none text-center text-dark" href="products.php?page_no=<?= $counter ?>"><?= $counter ?></a></li>

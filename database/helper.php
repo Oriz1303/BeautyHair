@@ -15,6 +15,7 @@ function execute($sql)
 
   //Dong ket noi
   mysqli_close($conn);
+  
 }
 
 /**

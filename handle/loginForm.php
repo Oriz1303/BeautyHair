@@ -8,12 +8,12 @@ if (isset($_POST['signinUsername']) && isset($_POST['signinPassword'])) {
     if (mysqli_num_rows($sql) > 0) {
         $account = mysqli_fetch_assoc($sql);
         $_SESSION['account_id'] = $account['id'];
-        echo $account['status'];
+        
         if ($account['status'] == 0) {
             header("location: index.php");
             ob_end_flush();
         } else {
-            header("location: ../admin/index.php");
+            header("location: ../AdminLTE-3.2.0/index2.php");
             ob_end_flush();
         }
     } else {
@@ -21,3 +21,4 @@ if (isset($_POST['signinUsername']) && isset($_POST['signinPassword'])) {
         $_SESSION['errorMessage'] = $errorMessage;
     }
 }
+

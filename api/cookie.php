@@ -73,4 +73,6 @@ if (!empty($_POST)) {
 			setcookie('compare', json_encode($compare), time() + 30 * 24 * 60 * 60, '/');
 			break;
 	}
+} else {
+	echo 'none';
 }

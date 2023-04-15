@@ -27,7 +27,7 @@ if (isset($_SESSION['errorMessage']) ) {
         <div class="d-flex justify-content-center w-100">
             <form id="sign-up" class="w-50" action="" method="POST">
                 <div class="form-group mb-3">
-                    <input class="form-control border my-2 px-4 py-2 w-100 rounded-pill " rules="required" name="signupUsername" type="text" placeholder="Email or username">
+                    <input class="form-control border my-2 px-4 py-2 w-100 rounded-pill " rules="required" name="signupUsername" type="text" placeholder="Username">
                     <span class="form-message text-danger"></span>
                 </div>
                 <div class="form-group mb-3">

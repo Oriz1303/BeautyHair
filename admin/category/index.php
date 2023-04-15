@@ -59,13 +59,13 @@ require_once('../config/dbhelper.php');
                 <tbody>
                     <?php
                     // Lấy danh sách danh mục
-                    $sql = 'select * from category';
+                    $sql = 'select * from products_categories';
                     $categoryList = executeResult($sql);
                     $index = 1;
                     foreach ($categoryList as $item) {
                         echo '  <tr>
                     <td>' . ($index++) . '</td>
-                    <td>' . $item['name'] . '</td>
+                    <td>' . $item['categories'] . '</td>
                     <td>
                         <a href="add.php?id=' . $item['id'] . '">
                             <button class=" btn btn-warning">Sửa</button> 

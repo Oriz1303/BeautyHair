@@ -25,7 +25,6 @@ if (!empty($_POST)) {
 	$address = getPost('address') . ', ' . getPost('district') . ', ' . $province . '.';
 	date_default_timezone_set('Asia/Saigon');
 	$orderDate = date('Y-m-d H:i:s');
-	echo $address;
 
 	//add order
 	$sql = "insert into orders(fullname, email, phone_number, address, order_date) values ('$fullname', '$email', '$phone_number', '$address', '$orderDate')";
