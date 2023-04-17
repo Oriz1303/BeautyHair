@@ -269,6 +269,19 @@ header .nav-bar .nav-link:hover {
 
 }
 
+.link-hover {
+    opacity: .8;
+}
+
+.link-hover:hover {
+    opacity: 1;
+    font-size: 17px;
+}
+
+.add-cart:active {
+    font-size: 16px;
+}
+
 /* ------------------------------------CONTENT END-------------------------------------------------- */
 
 

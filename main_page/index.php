@@ -88,16 +88,6 @@ include("../components/header.php");
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="text-center">
-                            <a href="./products_detail.php?products=<?= $shampoo['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $shampoo['url'] ?>" alt=""></a>
-                            <div class="text-center fs-4">
-                                <i onclick="addToCart(<?= $shampoo['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
-                                <p><?= $shampoo['name'] ?></p>
-                                <p class="fs-5 fw-light">$ <?= $shampoo['price'] ?></p>
-                            </div>
-                        </div>
-                    </div>
                 <?php
                 }
                 ?>
@@ -107,16 +97,6 @@ include("../components/header.php");
                 $resultMask = executeResult("SELECT * FROM information_products WHERE title=3");
                 foreach ($resultMask as $mask) {
                 ?>
-                    <div>
-                        <div class="text-center">
-                            <a href="./products_detail.php?products=<?= $mask['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $mask['url'] ?>" alt=""></a>
-                            <div class="text-center fs-4">
-                                <i onclick="addToCart(<?= $mask['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
-                                <p><?= $mask['name'] ?></p>
-                                <p class="fs-5 fw-light">$ <?= $mask['price'] ?></p>
-                            </div>
-                        </div>
-                    </div>
                     <div>
                         <div class="text-center">
                             <a href="./products_detail.php?products=<?= $mask['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $mask['url'] ?>" alt=""></a>
@@ -146,16 +126,6 @@ include("../components/header.php");
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="text-center">
-                            <a href="./products_detail.php?products=<?= $serum['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $serum['url'] ?>" alt=""></a>
-                            <div class="text-center fs-4">
-                                <i onclick="addToCart(<?= $serum['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
-                                <p><?= $serum['name'] ?></p>
-                                <p class="fs-5 fw-light">$ <?= $serum['price'] ?></p>
-                            </div>
-                        </div>
-                    </div>
                 <?php
                 }
                 ?>
@@ -165,16 +135,6 @@ include("../components/header.php");
                 $resultOther = executeResult("SELECT * FROM information_products WHERE title=6");
                 foreach ($resultOther as $other) {
                 ?>
-                    <div>
-                        <div class="text-center">
-                            <a href="./products_detail.php?products=<?= $other['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $other['url'] ?>" alt=""></a>
-                            <div class="text-center fs-4">
-                                <i onclick="addToCart(<?= $other['id'] ?>)" class="fa-solid fa-cart-shopping"></i>
-                                <p><?= $other['name'] ?></p>
-                                <p class="fs-5 fw-light">$ <?= $other['price'] ?></p>
-                            </div>
-                        </div>
-                    </div>
                     <div>
                         <div class="text-center">
                             <a href="./products_detail.php?products=<?= $other['id'] ?>"><img class="w-50 text-center" src="../resources/img/img_cosmetics/<?= $other['url'] ?>" alt=""></a>

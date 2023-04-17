@@ -51,18 +51,19 @@ if (!empty($_POST)) {
 	$id_account = '';
 	if (isset($_SESSION['account_id'])) {
 		$id_account = $_SESSION['account_id'];
-		echo $id_account;
 	}
 	foreach ($cartList as $item) {
 		$num = 0;
 		foreach ($cart as $value) {
 			if ($value['id'] == $item['id']) {
 				$num = $value['num'];
+				$num = (int) $num;
 				break;
 			}
 		}
-
-		$sql = "INSERT into order_details (order_id, product_id, num, price, account_id) VALUES ($orderId, " . $item['id'] . ", $num, " . $item['price'] . ", $id_account);";
+		$price = $item['price'];
+		$product_id = $item['id']; 
+		$sql = ("INSERT INTO `order_details` (`order_id`, `product_id`, `num`, `price`, `account_id`, `status`) VALUES ($orderId, $product_id, $num, $price, $id_account, 'Pending')");
 		execute($sql);
 	}
 

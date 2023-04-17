@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-4">
                 <p class="brand">N A T U R E</p>
-                <p class="text-white">Nhờ sự ủng hộ mạnh mẽ từ những người có cùng đam mê khắp nơi trên cả nước, chúng tôi tự hào là một trong những Nature chuyên nghiệp nhất Việt Nam ở thời điểm hiện tại.</p>
+                <p class="text-white">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas debitis quam iste ad omnis minus veniam velit repudiandae nihil consequuntur saepe veritatis pariatur reiciendis ea ullam, praesentium repellendus, asperiores fugiat.</p>
                 <div class="">
                     <strong class="text-white">FOLLOW US</strong>
                     <div class="social-media-brand">

@@ -67,7 +67,7 @@ require_once './index2_header.php';
                             </div>
                         </div>
                         <div class="card-body p-0">
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>NO</th>

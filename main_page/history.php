@@ -17,7 +17,7 @@ $user = $historyEmpty =  '';
         <p class="fs-1 fw-light">History</p>
     </div>
     <div class=" w-100">
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>NO</th>

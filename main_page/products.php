@@ -45,11 +45,6 @@ if (count($idCompare) > 0) {
 ?>
 
 <style>
-    .displayListComesticsParent {
-
-    }
-
-
     .displayListComestics:hover {
         animation: rotate 1s linear;
     }
@@ -72,18 +67,20 @@ if (count($idCompare) > 0) {
                 </div>
             </div>
             <ul class="ps-2 text-decoration-none text-dark" style="list-style-type: none;">
-                <li><a href="">Cream</a></li>
-                <li><a href="">Shampoo</a></li>
-                <li><a href="">Mask</a></li>
-                <li><a href="">Serum</a></li>
-                <li><a href="">Hairsprays</a></li>
-                <li><a href="">Oils</a></li>
+                <li><a class="nav-link" href="products.php?cate=1">Cream</a></li>
+                <li><a class="nav-link" href="products.php?cate=2">Shampoo</a></li>
+                <li><a class="nav-link" href="products.php?cate=3">Mask</a></li>
+                <li><a class="nav-link" href="products.php?cate=4">Serum</a></li>
+                <li><a class="nav-link" href="products.php?cate=5">Hairsprays</a></li>
+                <li><a class="nav-link" href="products.php?cate=6">Oils</a></li>
             </ul>
+            <div>
+                <input type="range" min="">
+            </div>
+            <button class="btn btn-dark">Ok</button>
         </div>
         <div class="col-10">
             <div class="container w-100">
-
-
                 <?php
                 if (isset($_GET['cate'])) {
                     $cate = getGet('cate');
@@ -120,7 +117,9 @@ if (count($idCompare) > 0) {
                         <p class="w-50 fw-bold fs-2">COSMETICS <span class="fw-light fs-5">(<?php foreach ($sqlCount as $count) {
                                                                                                 echo $count['count'];
                                                                                             } ?> products)</span></p>
-                        <p class="w-50 d-flex justify-content-end">Order</p>
+                        <div class="w-50 d-flex justify-content-end">
+                            <span>Sorted by</span>
+                        </div>
                         <hr>
                     </div>
                     <?php
@@ -130,7 +129,7 @@ if (count($idCompare) > 0) {
                         <div class="grid-item">
                             <a href="products_detail.php?products=<?= $row['id'] ?>"><img class="list-products-image" src="../resources/img/img_cosmetics/<?= $row['url'] ?>" alt=""></a>
                             <div class="text-center fs-5">
-                                <i onclick="addToCart(<?= $row['id'] ?>)" class="fa-solid fa-cart-shopping"></i><br>
+                                <i onclick="addToCart(<?= $row['id'] ?>)" class="add-cart fa-solid fa-cart-shopping"></i><br>
                                 <a class="text-decoration-none text-dark" href="products_detail.php?products=<?= $row['id'] ?>"><?= $row['name'] ?></a><br>
                                 <button type="submit" class="compare-product bg-white fs-6 fw-light " onclick="addProductCompare(<?= $row['id'] ?>)">+ Compare</button>
                                 <button type="submit" class="compare-delete bg-white d-none fs-6 fw-light " onclick="deleteProductCompare(<?= $row['id'] ?>)">- Compared</button>
@@ -158,8 +157,6 @@ if (count($idCompare) > 0) {
                     </div>
                 <?php
                 } ?>
-
-
             </div>
         </div>
     </div>
@@ -233,7 +230,6 @@ include "../components/footer.php"
 ?>
 <script>
     let blockCompare = document.getElementById('compare-product');
-    console.log(blockCompare)
     let compare = document.querySelectorAll('.compare-product');
     let compareDeleteBtn = document.querySelectorAll('.compare-delete');
     compare.forEach((product, index) => {
@@ -273,6 +269,7 @@ include "../components/footer.php"
     }
 
     function deleteProductCompare(id) {
+
         $.post('../api/cookie.php', {
             'action': 'compare_delete',
             'id_product': id

@@ -17,7 +17,7 @@ const Validator = (formSelector) => {
         },
         strongPassword: (value) => {
             let regex = /^(?=(?:.*[a-z]){2})(?=(?:.*[A-Z]){2})(?=(?:.*\d){2})(?=(?:.*[!@#$%^&*-]){2}).{6,18}$/;
-            return regex.test(value) ? undefined : 'Your password is weak'
+            return regex.test(value) ? undefined : 'Your password is weak <br> Password includes 2 '
         },
         min: (min) => {
             return (value) => {

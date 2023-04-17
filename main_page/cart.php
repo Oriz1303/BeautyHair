@@ -39,8 +39,8 @@ if (count($cart) == 0) {
         <p class="fs-1 fw-light">Your cart</p>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <table id="listItem" class="table ">
+        <div id="listItem" class="col-md-12">
+            <table  class="table ">
                 <thead>
                     <tr>
                         <th>Products</th>
@@ -79,14 +79,14 @@ if (count($cart) == 0) {
             </table>
             <?php
             if (isset($_SESSION['nothingCart'])) {
-                echo '<div class="text-center fs-2">' . $_SESSION['nothingCart'] . '</div>';
+                echo '<div id="" class="text-center fs-2">' . $_SESSION['nothingCart'] . '</div>';
                 unset($_SESSION['nothingCart']);
             } else {
                 echo '';
             }
             ?>
             <div class="float-right">
-                <div class="fs-3" id="totalOrder">
+                <div class="fs-3" >
                     Total : <span class="text-danger">$ <?= number_format($total, 2, '.', ',') ?></span>
                 </div>
                 <div class="">
@@ -106,7 +106,6 @@ if (count($cart) == 0) {
             'id': id
         }, (data) => {
             $("#totalCart").load("../components/header.php #totalCart");
-            $('#totalOrder').load("cart.php #totalOrder");
             $('#listItem').load("cart.php #listItem");
         })
     }
@@ -119,11 +118,9 @@ if (count($cart) == 0) {
             'num': Number(num) ? Number(num) : 1
         }, (data) => {
             $("#totalCart").load("../components/header.php #totalCart");
-            $('#totalOrder').load("cart.php #totalOrder");
             $('#listItem').load("cart.php #listItem");
         })
     }
-    
 </script>
 
 <?php require_once('../components/footer.php'); ?>

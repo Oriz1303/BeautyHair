@@ -24,13 +24,13 @@ if (count($idList) > 0) {
 	$cartList = [];
 }
 
-
 ?>
 <!-- body -->
 <div class="container pt-3 fw-light fs-5">
 	<a class="text-decoration-none text-dark " href="../main_page/index.php">Home</a><span class=""> > Checkout</span>
 </div>
 <hr>
+
 <form id="shipping-info" action="" method="post" class="py-5">
 	<div class="container">
 		<div class="row">
@@ -128,12 +128,22 @@ if (count($idList) > 0) {
 				</p>
 
 				<div class="w-100 text-center ">
-					<button class="btn btn-success rounded-pill  w-50" style="font-size: 32px;">Complete</button>
+					<?php
+					if(isset($_SESSION['account_id'])) {
+						echo '<button class="btn btn-success rounded-pill  w-50" style="font-size: 32px;">Complete</button>';
+						$requiredLogin = '';
+					} else {
+						echo '<span class="btn btn-success rounded-pill  w-50" style="font-size: 32px;">Complete</span>';
+						$requiredLogin = '<div class="text-center bg-danger py-3">You must login before paying <a class="text-decoration-none" href="./login.php">Login</a></div>';
+					}
+					?>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
+<?=$requiredLogin?>
+
 
 
 <script src="../resources/js/validator.js"></script>
